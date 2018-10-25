@@ -13,5 +13,20 @@ namespace ejemplo.Controllers
         {
             return View();
         }
+
+        public ActionResult NuevoLibro()
+        {
+            return View();
+        }
+
+        public ActionResult BuscarTitulo()
+        {
+            return View();
+        }
+
+        public ActionResult BuscarAutor()
+        {
+            return View();
+        }
     }
 }

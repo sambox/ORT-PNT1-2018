@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\ejemplo",
-    "\\ejemplo\\Views",
-    "\\packages"
+    "\\ejemplo\\App_Start",
+    "\\ejemplo\\Views\\Usuario"
   ],
+  "SelectedNode": "\\ejemplo\\App_Start",
   "PreviewInSolutionExplorer": false
 }

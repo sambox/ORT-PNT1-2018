@@ -13,5 +13,23 @@ namespace ejemplo.Controllers
         {
             return View();
         }
+        public ActionResult ListarNoDevueltos()
+        {
+            return View();
+        }
+        public ActionResult NuevoPrestamo()
+        {
+            return View();
+        }
+        public ActionResult PrestamoPorDNI()
+        {
+            return View();
+        }
+        public ActionResult PrestamoPorLibro()
+        {
+            return View();
+        }
+
+
     }
 }

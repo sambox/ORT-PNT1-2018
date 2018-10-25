@@ -20,5 +20,11 @@ namespace ejemplo.Controllers
             return View();
         }
 
+        public ActionResult BuscarUsuario()
+        {
+            @ViewBag.Title = "Buscar Usuario";
+            return View();
+        }
+
     }
 }

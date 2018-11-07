@@ -8,7 +8,7 @@
 
 function validacionTexto(elemento) {
     let error = false;
-    if (elemento.val() == "" || /[^A-Za-z\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da\u00f1\u00d1\u00FC\u00DC\' ]/.test(elemento.val()) == true) {
+    if (elemento.val() == "" || /[^A-Za-z\u00e1\u00e9\u00ed\u00f3\u00fa\u00c1\u00c9\u00cd\u00d3\u00da\u00f1\u00d1\u00FC\u00DC\']/.test(elemento.val()) == true) {
         error = true;
     }
     return error;
@@ -102,12 +102,145 @@ $(document).ready(function () {
         mostrarError($(this), validacionFecha($(this)));
     });
 
-    $("#btnSubmitNuevoUsuario").on("click", function (event) {
+    $("#btnNuevoUsuario").on("click", function (event) {
         event.preventDefault();
-        if (validacionTexto($("#formNuevoUsuario>#nombre"))) {
-            $(this).submit();
+        let error = false;
+        let form = $("#formNuevoUsuario");
+        let nombre = $("#formNuevoUsuario #nombre");
+        let apellido = $("#formNuevoUsuario #apellido");
+        let email = $("#formNuevoUsuario #email");
+        let tipoDoc = $("#formNuevoUsuario #tipoDoc");
+        let nroDoc = $("#formNuevoUsuario #nroDoc");
+
+        if (validacionTexto(nombre)) {
+            mostrarError(nombre, true);
+            error = true;
         } else {
-            console.log("falla");
+            mostrarError(nombre, false);
+        }
+        if (validacionTexto(apellido)) {
+            mostrarError(apellido, true);
+            error = true;
+        } else {
+            mostrarError(apellido, false);
+        }
+        if (validacionEmail(email)) {
+            mostrarError(email, true);
+            error = true;
+        } else {
+            mostrarError(email, false);
+        }
+        if (validacionCombo(tipoDoc)) {
+            mostrarError(tipoDoc, true);
+            error = true;
+        } else {
+            mostrarError(tipoDoc, false);
+        }
+        if (validacionNumerica(nroDoc) || nroDoc.val().length < 8) {
+            mostrarError(nroDoc, true);
+            error = true;
+        } else {
+            mostrarError(nroDoc, false);
+        }
+
+        if (!error) {
+            form.submit();
+        }
+    });
+
+    $("#btnBuscarUsuario").on("click", function (event) {
+        event.preventDefault();
+        let error = false;
+        let form = $("#formBuscarUsuario");
+        let nroDoc = $("#formBuscarUsuario #nroDoc");
+
+        if (validacionNumerica(nroDoc) || nroDoc.val().length < 8) {
+            mostrarError(nroDoc, true);
+            error = true;
+        } else {
+            mostrarError(nroDoc, false);
+        }
+
+        if (!error) {
+            form.submit();
+        }
+    });
+
+    $("#btnNuevoLibro").on("click", function (event) {
+        event.preventDefault();
+        let error = false;
+        let form = $("#formNuevoLibro");
+        let titulo = $("#formNuevoLibro #titulo");
+        let autor = $("#formNuevoLibro #autor");
+        let isbn = $("#formNuevoLibro #isbn");
+        let genero = $("#formNuevoLibro #genero");
+        let ejemplares = $("#formNuevoLibro #ejemplares");
+
+        if (validacionTexto(titulo)) {
+            mostrarError(titulo, true);
+            error = true;
+        } else {
+            mostrarError(titulo, false);
+        }
+        if (validacionTexto(autor)) {
+            mostrarError(autor, true);
+            error = true;
+        } else {
+            mostrarError(autor, false);
+        }
+        if (validacionVacio(isbn)) {
+            mostrarError(isbn, true);
+            error = true;
+        } else {
+            mostrarError(isbn, false);
+        }
+        if (validacionTexto(genero)) {
+            mostrarError(genero, true);
+            error = true;
+        } else {
+            mostrarError(genero, false);
+        }
+        if (validacionNumerica(ejemplares) || ejemplares.val() <1) {
+            mostrarError(ejemplares, true);
+            error = true;
+        } else {
+            mostrarError(ejemplares, false);
+        }
+
+        if (!error) {
+            form.submit();
+        }
+    });
+
+    $("#btnBuscarTitulo").on("click", function (event) {
+        event.preventDefault();
+        let error = false;
+        let form = $("#formBuscarTitulo");
+        let titulo = $("#formBuscarTitulo #titulo");
+        if (validacionTexto(titulo)) {
+            mostrarError(titulo, true);
+            error = true;
+        } else {
+            mostrarError(titulo, false);
+        }
+        if (!error) {
+            form.submit();
+        }
+    });
+
+    $("#btnBuscarAutor").on("click", function (event) {
+        event.preventDefault();
+        let error = false;
+        let form = $("#formBuscarAutor");
+        let autor = $("#formBuscarAutor #autor");
+        if (validacionTexto(autor)) {
+            mostrarError(autor, true);
+            error = true;
+        } else {
+            mostrarError(autor, false);
+        }
+        if (!error) {
+            form.submit();
         }
     });
 });

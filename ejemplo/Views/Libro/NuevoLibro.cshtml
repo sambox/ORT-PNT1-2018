@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "NuevoLibro";
+    ViewBag.Title = "Nuevo Libro";
 }
 <br />
 <div class="col-md-8 col-md-offset-2">
@@ -9,7 +9,7 @@
             @ViewBag.Title
         </div>
         <div class="panel-body">
-            <form>
+            <form id="formNuevoLibro">
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
                     <input type="text" class="form-control validacion-vacio" id="titulo" placeholder="Libro">
@@ -28,9 +28,9 @@
                 </div>
                 <div class="form-group">
                     <label for="ejemplares">Ejemplares</label>
-                    <input type="text" class="form-control validacion-numerica" id="ejemplares" placeholder="8">
+                    <input type="number" class="form-control validacion-numerica" id="ejemplares" placeholder="8">
                 </div>
-                <div class="form-group"><button type="submit" class="btn btn-primary">Agregar</button></div>
+                <div class="form-group"><button type="submit" class="btn btn-primary" id="btnNuevoLibro">Agregar</button></div>
             </form>
         </div>
     </div>

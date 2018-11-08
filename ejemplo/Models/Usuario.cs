@@ -17,5 +17,6 @@ namespace ejemplo.Models
         private String calle;
         private int numero;
         private int telefono;
+        public List<Prestamo> prestamos;
     }
 }

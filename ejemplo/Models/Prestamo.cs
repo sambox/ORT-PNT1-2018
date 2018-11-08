@@ -11,5 +11,8 @@ namespace ejemplo.Models
         private bool devuelto;
         private DateTime fechaPrestamo;
         private DateTime fechaDevolucion;
+        public Usuario usuario;
+
+        public Libro libro;
     }
 }

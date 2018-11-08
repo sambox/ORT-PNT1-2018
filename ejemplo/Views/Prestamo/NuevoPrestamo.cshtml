@@ -9,50 +9,32 @@
             @ViewBag.Title
         </div>
         <div class="panel-body">
-            <form>
+            <form id="formNuevoPrestamo">
                 <div class="form-group">
-                    <label for="titulo">Titulo</label>
-                    <input type="text" class="form-control validacion-vacio" id="titulo" placeholder="Libro">
-                </div>
-                <div class="form-group">
-                    <label for="autor">Autor</label>
-                    <input type="text" class="form-control validacion-texto" id="autor" placeholder="Perez">
-                </div>
-                <div class="form-group">
-                    <label for="isbn">Tipo Documento</label>
-                    <select class="form-control validacion-combo" id="tipoDni">
+                    <label for="nroDocUsuario">Usuario</label>
+                    <select class="form-control validacion-combo" id="nroDocUsuario">
                         <option value="0">Seleccionar</option>
-                        <option value="dni">DNI</option>
-                        <option value="pas">Pasaporte</option>
+                        <option value="34343434">Sebastián Molina</option>
+                        <option value="33221100">Julián Barki</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="dni">Número documento</label>
-                    <input type="text" class="form-control validacion-numerica" id="dni" placeholder="12341234">
+                    <label for="isbnLibro">Libro</label>
+                    <select class="form-control validacion-combo" id="isbnLibro">
+                        <option value="0">Seleccionar</option>
+                        <option value="qwerqwerqwer">El gato negro - Edgar Allan Poe</option>
+                        <option value="123412341234">1984 - George Orwell</option>
+                    </select>
                 </div>
-
                 <div class="form-group">
                     <label for="ejemplares">Ejemplares</label>
-                    <input type="text" class="form-control validacion-numerica" id="ejemplares" placeholder="8">
-                </div>
-
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control validacion-texto" id="nombre" placeholder="Juan">
+                    <input type="number" class="form-control validacion-numerica" id="ejemplares" placeholder="1">
                 </div>
                 <div class="form-group">
-                    <label for="nombre">Apellido</label>
-                    <input type="text" class="form-control validacion-texto" id="nombre" placeholder="Juan">
+                    <label for="fecha Prestamo">Fecha Prestamo</label>
+                    <input type="text" class="form-control validacion-fecha" id="fechaPrestamo" placeholder="dd/mm/yyyy">
                 </div>
-                <div class="form-group">
-                    <label for="nombre">FechaPrestamos</label>
-                    <input type="text" class="form-control validacion-fecha" id="FechaPrestamos" placeholder="10/12/2018">
-                </div>
-                <div class="form-group">
-                    <label for="nombre">FechaPrestamos</label>
-                    <input type="text" class="form-control validacion-fecha" id="FechaPrestamos" placeholder="10/12/2018">
-                </div>
-                <div class="form-group"><button type="submit" class="btn btn-primary">Agregar</button></div>
+                <div class="form-group"><button type="submit" class="btn btn-primary" id="btnNuevoPrestamo">Guardar</button></div>
             </form>
         </div>
     </div>

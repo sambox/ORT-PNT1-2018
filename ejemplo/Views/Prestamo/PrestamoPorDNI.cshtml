@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "PrestamoPorDNI";
+    ViewBag.Title = "Buscar PrestamosPor DNI";
 }
 
 
@@ -11,12 +11,12 @@
             @ViewBag.Title
         </div>
         <div class="panel-body">
-            <form id="">
+            <form class="formBuscadorPorDoc">
                 <div class="form-group">
                     <label for="nombre">DNI</label>
-                    <input type="text" class="form-control validacion-numerica" id="dni" placeholder="12345678">
+                    <input type="text" class="form-control validacion-numerica" id="nroDoc" placeholder="12345678">
                 </div>
-                <div class="form-group"><button type="submit" class="btn btn-primary">Buscar</button></div>
+                <div class="form-group"><button type="submit" class="btn btn-primary btnBuscadorPorDoc">Buscar</button></div>
             </form>
         </div>
     </div>

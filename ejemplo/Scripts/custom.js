@@ -148,11 +148,11 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnBuscarUsuario").on("click", function (event) {
+    $(".btnBuscadorPorDoc").on("click", function (event) {
         event.preventDefault();
         let error = false;
-        let form = $("#formBuscarUsuario");
-        let nroDoc = $("#formBuscarUsuario #nroDoc");
+        let form = $(".formBuscadorPorDoc");
+        let nroDoc = $(".formBuscadorPorDoc #nroDoc");
 
         if (validacionNumerica(nroDoc) || nroDoc.val().length < 8) {
             mostrarError(nroDoc, true);
@@ -212,11 +212,11 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnBuscarTitulo").on("click", function (event) {
+    $(".btnBuscadorPorTitulo").on("click", function (event) {
         event.preventDefault();
         let error = false;
-        let form = $("#formBuscarTitulo");
-        let titulo = $("#formBuscarTitulo #titulo");
+        let form = $(".formBuscadorPorTitulo");
+        let titulo = $(".formBuscadorPorTitulo #titulo");
         if (validacionTexto(titulo)) {
             mostrarError(titulo, true);
             error = true;
@@ -228,19 +228,43 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnBuscarAutor").on("click", function (event) {
+    $("#btnNuevoPrestamo").on("click", function (event) {
         event.preventDefault();
         let error = false;
-        let form = $("#formBuscarAutor");
-        let autor = $("#formBuscarAutor #autor");
-        if (validacionTexto(autor)) {
-            mostrarError(autor, true);
+        let form = $("#formNuevoPrestamo");
+        let nroDocUsuario = $("#formNuevoPrestamo #nroDocUsuario");
+        let isbnLibro = $("#formNuevoPrestamo #isbnLibro");
+        let ejemplares = $("#formNuevoPrestamo #ejemplares");
+        let fechaPrestamo = $("#formNuevoPrestamo #fechaPrestamo");
+
+        if (validacionCombo(nroDocUsuario)) {
+            mostrarError(nroDocUsuario, true);
             error = true;
         } else {
-            mostrarError(autor, false);
+            mostrarError(nroDocUsuario, false);
+        }
+        if (validacionCombo(isbnLibro)) {
+            mostrarError(isbnLibro, true);
+            error = true;
+        } else {
+            mostrarError(isbnLibro, false);
+        }
+        if (validacionNumerica(ejemplares) || ejemplares.val() < 1) {
+            mostrarError(ejemplares, true);
+            error = true;
+        } else {
+            mostrarError(ejemplares, false);
+        }
+        if (validacionFecha(fechaPrestamo)) {
+            mostrarError(fechaPrestamo, true);
+            error = true;
+        } else {
+            mostrarError(fechaPrestamo, false);
         }
         if (!error) {
             form.submit();
         }
     });
+
+
 });

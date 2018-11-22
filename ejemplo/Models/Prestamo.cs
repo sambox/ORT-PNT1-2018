@@ -7,12 +7,24 @@ namespace ejemplo.Models
 {
     public class Prestamo
     {
-        private int id;
-        private bool devuelto;
-        private DateTime fechaPrestamo;
-        private DateTime fechaDevolucion;
-        public Usuario usuario;
+        public int PrestamoId { get; set; }
+        public bool devuelto { get; set; }
+        public DateTime fechaPrestamo { get; set; }
+        public DateTime fechaDevolucion { get; set; }
+        public Usuario usuario { get; set; }
+        public Libro libro { get; set; }
 
-        public Libro libro;
+        public Prestamo(bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, Usuario usuario, Libro libro)
+        {
+            this.devuelto = devuelto;
+            this.fechaPrestamo = fechaPrestamo;
+            this.fechaDevolucion = fechaDevolucion;
+            this.usuario = usuario;
+            this.libro = libro;
+        }
+
+        public Prestamo() {
+
+        }
     }
 }

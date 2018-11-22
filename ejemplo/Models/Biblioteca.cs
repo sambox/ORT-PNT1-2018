@@ -8,11 +8,8 @@ namespace ejemplo.Models
 {
     public class Biblioteca
     {
-        private const int DIAS_PRESTAMO = 7;
-        public List<Prestamo> prestamos;
-        public List<Libro> libros;
-
-
-
+        public const int DIAS_PRESTAMO = 7;
+        public List<Prestamo> prestamos { get; set; }
+        public List<Libro> libros { get; set; }
     }
 }

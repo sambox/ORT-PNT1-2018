@@ -1,8 +1,5 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ejemplo.Models;
 using System.Web.Mvc;
 
 namespace ejemplo.Controllers
@@ -20,11 +17,24 @@ namespace ejemplo.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult NuevoUsuario(NuevoUsuarioViewModel nuvm)
+        {
+            using (var ctx = new BibliotecaContext())
+            {
+                var usuario = new Usuario(nuvm.tipoDocumento, nuvm.numeroDocumento, nuvm.nombre, nuvm.apellido, nuvm.email, nuvm.password, nuvm.localidad, nuvm.calle, nuvm.numero, nuvm.telefono);
+                ctx.Usuarios.Add(usuario);
+                ctx.SaveChanges();
+            }
+            return View();
+        }
+
         public ActionResult BuscarUsuario()
         {
             @ViewBag.Title = "Buscar Usuario";
             return View();
         }
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model ejemplo.Models.NuevoPrestamoFormViewModel
 @{
     ViewBag.Title = "NuevoPrestamo";
 }
@@ -12,18 +12,25 @@
             <form id="formNuevoPrestamo" method="post" action="Prestamo/">
                 <div class="form-group">
                     <label for="nroDocUsuario">Usuario</label>
+                    @Html.DropDownListFor(x=>x.libroID, Model.libros, "UsuarioId", "nombre", new {width="100px;" })
+                    @Html.TextBoxFor(x=>x.libros)
+                    @Html.ValidationMessageFor(x=>x.libros)
                     <select class="form-control validacion-combo" id="nroDocUsuario">
                         <option value="0">Seleccionar</option>
-                        <option value="34343434">Sebastián Molina</option>
-                        <option value="33221100">Julián Barki</option>
+                        @foreach (var usuario in Model.usuarios)
+                        {
+                            <option value="@Html.DisplayFor(modelItem => usuario.UsuarioId)">@Html.DisplayFor(modelItem => usuario.nombre)</option>
+                        }
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="isbnLibro">Libro</label>
                     <select class="form-control validacion-combo" id="isbnLibro">
                         <option value="0">Seleccionar</option>
-                        <option value="qwerqwerqwer">El gato negro - Edgar Allan Poe</option>
-                        <option value="123412341234">1984 - George Orwell</option>
+                        @foreach (var libro in Model.libros)
+                        {
+                            <option value="@Html.DisplayFor(modelItem => libro.LibroID)">@Html.DisplayFor(modelItem => libro.titulo) - @Html.DisplayFor(modelItem => libro.autor)</option>
+                        }
                     </select>
                 </div>
                 <div class="form-group">

@@ -164,7 +164,9 @@
     <Compile Include="Models\Biblioteca.cs" />
     <Compile Include="Models\BibliotecaContext.cs" />
     <Compile Include="Models\LibroViewModel.cs" />
-    <Compile Include="Models\PrestamoViewModel.cs" />
+    <Compile Include="Models\NuevoPrestamoFormViewModel.cs" />
+    <Compile Include="Models\NuevoUsuarioViewModel.cs" />
+    <Compile Include="Models\NuevoPrestamoViewModel.cs" />
     <Compile Include="Models\Prestamo.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\Libro.cs" />
@@ -183,6 +185,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\custom.js" />

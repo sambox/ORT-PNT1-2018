@@ -21,33 +21,22 @@ namespace ejemplo.Controllers
 
             return View();
         }
+
         [HttpPost]
         public ActionResult NuevoLibro(LibroViewModel libroView)
         {
             using (var ctx = new BibliotecaContext())
             {
-           string titulo = libroView.Titulo;
-                string autor = libroView.Autor;
-                List<String> autores = new List<String>();
-                autores.Add(autor);
-                string Isbn = libroView.Isbn;
-                string Genero = libroView.Genero;
-                List<String> generos = new List<String>();
-                autores.Add(Genero);
-                int Ejemplares = libroView.Ejemplares;
-
-                var libro = new Libro(titulo,autores,generos,Isbn,Ejemplares);
-
+                var libro = new Libro(
+                    libroView.titulo, 
+                    libroView.autor, 
+                    libroView.genero, 
+                    libroView.isbn, 
+                    libroView.cantEjemplares
+                );
                 ctx.Libros.Add(libro);
                 ctx.SaveChanges();
             }
-
-              
-
-
-
-
-
             return View();
         }
 

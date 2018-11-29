@@ -20,7 +20,7 @@ namespace ejemplo.Models
         public int telefono { get; set; }
         public List<Prestamo> prestamos { get; set; }
 
-        public Usuario(string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono, List<Prestamo> prestamos)
+        public Usuario(string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
         {
             this.tipoDocumento = tipoDocumento;
             this.numeroDocumento = numeroDocumento;
@@ -32,7 +32,10 @@ namespace ejemplo.Models
             this.calle = calle;
             this.numero = numero;
             this.telefono = telefono;
-            this.prestamos = prestamos;
+        }
+
+        public Usuario()
+        {
         }
     }
 }

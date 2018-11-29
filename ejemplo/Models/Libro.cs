@@ -9,19 +9,22 @@ namespace ejemplo.Models
     {
         public int LibroID { get; set; }
         public String titulo { get; set; }
-        public List<String> autores { get; set; }
-        public List<String> generos { get; set; }
+        public String autor { get; set; }
+        public String genero { get; set; }
         public String isbn { get; set; }
         public int cantEjemplares { get; set; }
 
-        public Libro(string titulo, List<string> autores, List<string> generos, string isbn, int cantEjemplares)
+        public Libro(string titulo, string autor, string genero, string isbn, int cantEjemplares)
         {
             this.titulo = titulo;
-            this.autores = autores;
-            this.generos = generos;
+            this.autor = autor;
+            this.genero = genero;
             this.isbn = isbn;
             this.cantEjemplares = cantEjemplares;
-            
+        }
+
+        public Libro()
+        {
         }
     }
 }

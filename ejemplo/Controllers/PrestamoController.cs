@@ -26,11 +26,33 @@ namespace ejemplo.Controllers
         }
         public ActionResult NuevoPrestamo()
         {
-            return View();
+            List<Usuario> usuarios = getUsuarios();
+            List<Libro> libros = new List<Libro>(); // = getLibros()
+            return View(new NuevoPrestamoFormViewModel(usuarios, libros));
+        }
+
+        private List<Libro> getLibros()
+        {
+            List<Libro> libros;
+            using (var ctx = new BibliotecaContext())
+            {
+                libros = ctx.Libros.ToList();
+            }
+            return libros;
+        }
+
+        private List<Usuario> getUsuarios()
+        {
+            List<Usuario> usuarios;
+            using (var ctx = new BibliotecaContext())
+            {
+                usuarios = ctx.Usuarios.ToList();
+            }
+            return usuarios;
         }
 
         [ HttpPost ]
-        public ActionResult NuevoPrestamo(PrestamoViewModel p)
+        public ActionResult NuevoPrestamo(NuevoPrestamoViewModel p)
         {
             /*using (var ctx = new BibliotecaContext())
             {

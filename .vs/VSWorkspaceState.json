@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
-    "",
     "\\ejemplo",
     "\\ejemplo\\App_Start",
     "\\ejemplo\\Controllers",
-    "\\ejemplo\\Models",
-    "\\ejemplo\\Views\\Usuario"
+    "\\ejemplo\\Models"
   ],
   "PreviewInSolutionExplorer": false
 }

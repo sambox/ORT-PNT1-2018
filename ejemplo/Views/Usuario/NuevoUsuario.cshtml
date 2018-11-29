@@ -2,10 +2,10 @@
 <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-primary">
         <div class="panel-heading">
-                @ViewBag.Title
+            @ViewBag.Title
         </div>
         <div class="panel-body">
-            <form id="formNuevoUsuario">
+            <form id="formNuevoUsuario" method="post" action="NuevoUsuario/">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
                     <input type="text" class="form-control validacion-texto" id="nombre" placeholder="Juan">

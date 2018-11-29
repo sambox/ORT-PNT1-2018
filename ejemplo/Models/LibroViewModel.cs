@@ -7,11 +7,10 @@ namespace ejemplo.Models
 {
     public class LibroViewModel
     {
-        public string Titulo { get; set; }
-     public string Autor { get; set; }
-        public string Isbn { get; set; }
-        public string Genero { get; set; }
-        public int Ejemplares { get; set; }
-
+        public string titulo { get; set; }
+        public string autor { get; set; }
+        public string isbn { get; set; }
+        public string genero { get; set; }
+        public int cantEjemplares { get; set; }
     }
 }

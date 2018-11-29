@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Models\Biblioteca.cs" />
     <Compile Include="Models\BibliotecaContext.cs" />
+    <Compile Include="Models\LibroViewModel.cs" />
     <Compile Include="Models\PrestamoViewModel.cs" />
     <Compile Include="Models\Prestamo.cs" />
     <Compile Include="Models\Usuario.cs" />

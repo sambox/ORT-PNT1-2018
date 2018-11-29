@@ -21,6 +21,7 @@ namespace ejemplo.Models
             this.generos = generos;
             this.isbn = isbn;
             this.cantEjemplares = cantEjemplares;
+            
         }
     }
 }

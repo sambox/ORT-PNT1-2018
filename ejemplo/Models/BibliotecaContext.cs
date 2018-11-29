@@ -7,7 +7,8 @@ namespace ejemplo.Models
     {
         public BibliotecaContext() : base()
         {
-
+          //  Database.SetInitializer<BibliotecaContext>(new CreateDatabaseIfNotExists<BibliotecaContext>());
+           // Database.SetInitializer<BibliotecaContext>(null);
         }
 
         public DbSet<Prestamo> Prestamos { get; set; }

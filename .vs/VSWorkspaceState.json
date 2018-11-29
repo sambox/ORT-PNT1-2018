@@ -3,8 +3,9 @@
     "",
     "\\ejemplo",
     "\\ejemplo\\App_Start",
+    "\\ejemplo\\Controllers",
+    "\\ejemplo\\Models",
     "\\ejemplo\\Views\\Usuario"
   ],
-  "SelectedNode": "\\ejemplo\\App_Start",
   "PreviewInSolutionExplorer": false
 }

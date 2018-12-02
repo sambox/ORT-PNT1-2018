@@ -8,19 +8,19 @@
             <form id="formNuevoUsuario" method="post" action="NuevoUsuario/">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control validacion-texto" id="nombre" placeholder="Juan">
+                    <input type="text" class="form-control validacion-texto" id="nombre" name="nombre" placeholder="Juan">
                 </div>
                 <div class="form-group">
                     <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control validacion-texto" id="apellido" placeholder="Perez">
+                    <input type="text" class="form-control validacion-texto" id="apellido" name="apellido" placeholder="Perez">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control validacion-email" id="email" placeholder="ejemplo@mimail.com">
+                    <input type="email" class="form-control validacion-email" id="email" name="email" placeholder="ejemplo@mimail.com">
                 </div>
                 <div class="form-group">
                     <label for="tipoDoc">Tipo documento</label>
-                    <select class="form-control validacion-combo" id="tipoDoc">
+                    <select class="form-control validacion-combo" id="tipoDoc" name="tipoDocumento">
                         <option value="0">Seleccionar</option>
                         <option value="dni">DNI</option>
                         <option value="pas">Pasaporte</option>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     <label for="dni">Número documento</label>
-                    <input type="text" class="form-control validacion-numerica" id="nroDoc" placeholder="12341234">
+                    <input type="text" class="form-control validacion-numerica" id="nroDoc" name="numeroDocumento" placeholder="12341234">
                 </div>
                 <div class="form-group"><button type="submit" class="btn btn-primary" id="btnNuevoUsuario">Guardar</button></div>
             </form>

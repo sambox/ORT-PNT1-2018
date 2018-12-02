@@ -1,6 +1,6 @@
-﻿@model ejemplo.Models.NuevoPrestamoFormViewModel
+﻿@model ejemplo.Models.NuevoPrestamoViewModel
 @{
-    ViewBag.Title = "NuevoPrestamo";
+    ViewBag.Title = "Nuevo Prestamo";
 }
 <br />
 <div class="col-md-8 col-md-offset-2">
@@ -12,9 +12,7 @@
             <form id="formNuevoPrestamo" method="post" action="Prestamo/">
                 <div class="form-group">
                     <label for="nroDocUsuario">Usuario</label>
-                    @Html.DropDownListFor(x=>x.libroID, Model.libros, "UsuarioId", "nombre", new {width="100px;" })
-                    @Html.TextBoxFor(x=>x.libros)
-                    @Html.ValidationMessageFor(x=>x.libros)
+                    
                     <select class="form-control validacion-combo" id="nroDocUsuario">
                         <option value="0">Seleccionar</option>
                         @foreach (var usuario in Model.usuarios)

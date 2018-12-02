@@ -23,6 +23,16 @@ namespace ejemplo.Models
             this.cantEjemplares = cantEjemplares;
         }
 
+        public Libro(int LibroID, string titulo, string autor, string genero, string isbn, int cantEjemplares)
+        {
+            this.LibroID = LibroID;
+            this.titulo = titulo;
+            this.autor = autor;
+            this.genero = genero;
+            this.isbn = isbn;
+            this.cantEjemplares = cantEjemplares;
+        }
+
         public Libro()
         {
         }

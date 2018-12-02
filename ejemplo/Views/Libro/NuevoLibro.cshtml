@@ -9,26 +9,26 @@
             @ViewBag.Title
         </div>
         <div class="panel-body">
-            <form id="formNuevoLibro" method="post" action="NuevoLibro">
+            <form id="formNuevoLibro" method="post" action="NuevoLibro/">
                 <div class="form-group">
                     <label for="titulo">Titulo</label>
-                    <input type="text" class="form-control validacion-vacio" id="titulo" placeholder="Libro" name="Titulo">
+                    <input type="text" class="form-control validacion-vacio" id="titulo" placeholder="Libro" name="titulo">
                 </div>
                 <div class="form-group">
                     <label for="autor">Autor</label>
-                    <input type="text" class="form-control validacion-texto" id="autor" placeholder="Perez" name="Autor">
+                    <input type="text" class="form-control validacion-texto" id="autor" placeholder="Perez" name="autor">
                 </div>
                 <div class="form-group">
                     <label for="isbn">ISBN</label>
-                    <input type="text" class="form-control validacion-vacio" id="isbn" placeholder="AN215"name="Isbn">
+                    <input type="text" class="form-control validacion-vacio" id="isbn" placeholder="AN215"name="isbn">
                 </div>
                 <div class="form-group">
                     <label for="genero">Genero</label>
-                    <input type="text" class="form-control validacion-texto" id="genero" placeholder="Terror"name="Genero">
+                    <input type="text" class="form-control validacion-texto" id="genero" placeholder="Terror"name="genero">
                 </div>
                 <div class="form-group">
                     <label for="ejemplares">Ejemplares</label>
-                    <input type="number" class="form-control validacion-numerica" id="ejemplares" placeholder="8"name="Ejemplares">
+                    <input type="number" class="form-control validacion-numerica" id="ejemplares" placeholder="8"name="cantEjemplares">
                 </div>
                 <div class="form-group"><button type="submit" class="btn btn-primary" id="btnNuevoLibro">Agregar</button></div>
             </form>

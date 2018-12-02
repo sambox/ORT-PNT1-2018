@@ -164,7 +164,6 @@
     <Compile Include="Models\Biblioteca.cs" />
     <Compile Include="Models\BibliotecaContext.cs" />
     <Compile Include="Models\LibroViewModel.cs" />
-    <Compile Include="Models\NuevoPrestamoFormViewModel.cs" />
     <Compile Include="Models\NuevoUsuarioViewModel.cs" />
     <Compile Include="Models\NuevoPrestamoViewModel.cs" />
     <Compile Include="Models\Prestamo.cs" />
@@ -223,10 +222,11 @@
     <Content Include="Views\Prestamo\NuevoPrestamo.cshtml" />
     <Content Include="Views\Prestamo\PrestamoPorDNI.cshtml" />
     <Content Include="Views\Prestamo\PrestamoPorLibro.cshtml" />
+    <Content Include="Views\Libro\Eliminar.cshtml" />
+    <Content Include="Views\Libro\Modificar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Persona\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

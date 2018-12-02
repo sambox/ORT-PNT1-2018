@@ -20,6 +20,7 @@ namespace ejemplo.Controllers
         [HttpPost]
         public ActionResult NuevoUsuario(NuevoUsuarioViewModel nuvm)
         {
+            @ViewBag.Title = "Nuevo Usuario";
             using (var ctx = new BibliotecaContext())
             {
                 var usuario = new Usuario(nuvm.tipoDocumento, nuvm.numeroDocumento, nuvm.nombre, nuvm.apellido, nuvm.email, nuvm.password, nuvm.localidad, nuvm.calle, nuvm.numero, nuvm.telefono);

@@ -1,0 +1,15 @@
+﻿@model ejemplo.Models.NuevoLibroViewModel
+<h2>Eliminar</h2>
+
+<div class="card">
+    <div class="card-header">
+        Eliminar
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Segurx que desea eliminar el libro <strong>"@Model.titulo"</strong> de <strong>"@Model.autor"</strong>?</h5>
+        <form method="post" action="EliminarAction/">
+            <input type="hidden" name="LibroId" value="@Model.LibroId" />
+            <button type="submit" class="btn btn-link">Eliminar</button>
+        </form>
+    </div>
+</div>

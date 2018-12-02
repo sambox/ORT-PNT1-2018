@@ -6,19 +6,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ejemplo.Controllers
-{
-    public class PrestamoController : Controller
-    {
+namespace ejemplo.Controllers {
+    public class PrestamoController : Controller {
         // GET: Prestamo
         public ActionResult Listar()
         {
             using (var ctx = new BibliotecaContext())
             {
-               var lista = ctx.Prestamos.ToList();
+                var lista = ctx.Prestamos.ToList();
 
             }
-                return View();
+            return View();
         }
         public ActionResult ListarNoDevueltos()
         {
@@ -26,9 +24,10 @@ namespace ejemplo.Controllers
         }
         public ActionResult NuevoPrestamo()
         {
-            List<Usuario> usuarios = getUsuarios();
-            List<Libro> libros = new List<Libro>(); // = getLibros()
-            return View(new NuevoPrestamoFormViewModel(usuarios, libros));
+            NuevoPrestamoViewModel npvm = new NuevoPrestamoViewModel();
+            npvm.usuarios = getUsuarios();
+            npvm.libros = getLibros();
+            return View(npvm);
         }
 
         private List<Libro> getLibros()
@@ -51,7 +50,7 @@ namespace ejemplo.Controllers
             return usuarios;
         }
 
-        [ HttpPost ]
+        [HttpPost]
         public ActionResult NuevoPrestamo(NuevoPrestamoViewModel p)
         {
             /*using (var ctx = new BibliotecaContext())

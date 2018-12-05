@@ -20,6 +20,21 @@ namespace ejemplo.Models
         public int telefono { get; set; }
         public List<Prestamo> prestamos { get; set; }
 
+        public Usuario(int UsuarioId, string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
+        {
+            this.UsuarioId = UsuarioId;
+            this.tipoDocumento = tipoDocumento;
+            this.numeroDocumento = numeroDocumento;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.email = email;
+            this.password = password;
+            this.localidad = localidad;
+            this.calle = calle;
+            this.numero = numero;
+            this.telefono = telefono;
+        }
+
         public Usuario(string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
         {
             this.tipoDocumento = tipoDocumento;

@@ -1,12 +1,10 @@
 ﻿using ejemplo.Models;
-using System;
+using ejemplo.Services;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace ejemplo.Controllers
-{
+namespace ejemplo.Controllers {
     public class LibroController : Controller
     {
         // GET: Libro
@@ -38,7 +36,7 @@ namespace ejemplo.Controllers
 
         public ActionResult Modificar(int LibroId)
         {
-            Libro l = getLibroById(LibroId);
+            Libro l = LibroService.getLibroById(LibroId);
             LibroViewModel lvm = new LibroViewModel();
             lvm.autor = l.autor;
             lvm.cantEjemplares = l.cantEjemplares;
@@ -65,27 +63,17 @@ namespace ejemplo.Controllers
                     ctx.SaveChanges();
                 }
             }
-            return volverAlListado(); // terminar esto, hacerlo generico con el formulario pasando titulo por viewBag
+            return volverAlListado();
         }
 
         public ActionResult Eliminar(int LibroId)
         {
-            Libro l = getLibroById(LibroId);
+            Libro l = LibroService.getLibroById(LibroId);
             LibroViewModel libroView = new LibroViewModel();
             libroView.LibroId = LibroId;
             libroView.titulo = l.titulo;
             libroView.autor = l.autor;
             return View(libroView);
-        }
-
-        private static Libro getLibroById(int LibroId)
-        {
-            Libro l;
-            using (var ctx = new BibliotecaContext())
-            {
-                l = ctx.Libros.Where(b => b.LibroID == LibroId).FirstOrDefault();
-            }
-            return l;
         }
 
         [HttpPost]

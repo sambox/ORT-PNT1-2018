@@ -14,6 +14,16 @@ namespace ejemplo.Models
         public string genero { get; set; }
         public int cantEjemplares { get; set; }
 
+        public LibroViewModel(int libroId, string titulo, string autor, string isbn, string genero, int cantEjemplares)
+        {
+            LibroId = libroId;
+            this.titulo = titulo;
+            this.autor = autor;
+            this.isbn = isbn;
+            this.genero = genero;
+            this.cantEjemplares = cantEjemplares;
+        }
+
         public LibroViewModel()
         {
         }

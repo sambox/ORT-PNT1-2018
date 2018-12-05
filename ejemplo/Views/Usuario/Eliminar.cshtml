@@ -1,0 +1,12 @@
+﻿@model ejemplo.Models.UsuarioViewModel
+<h2>Eliminar Usuario</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Segurx que desea eliminar el usuario <strong>"@Model.nombre @Model.apellido"</strong> con <strong>@Model.tipoDocumento @Model.numeroDocumento</strong>?</h5>
+        <form method="post" action="EliminarAction/">
+            <input type="hidden" name="UsuarioId" value="@Model.UsuarioId" />
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+    </div>
+</div>

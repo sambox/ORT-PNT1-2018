@@ -24,7 +24,7 @@ namespace ejemplo.Controllers {
         }
         public ActionResult NuevoPrestamo()
         {
-            NuevoPrestamoViewModel npvm = new NuevoPrestamoViewModel();
+            PrestamoViewModel npvm = new PrestamoViewModel();
             npvm.usuarios = getUsuarios();
             npvm.libros = getLibros();
             return View(npvm);
@@ -51,7 +51,7 @@ namespace ejemplo.Controllers {
         }
 
         [HttpPost]
-        public ActionResult NuevoPrestamo(NuevoPrestamoViewModel p)
+        public ActionResult NuevoPrestamo(PrestamoViewModel p)
         {
             /*using (var ctx = new BibliotecaContext())
             {

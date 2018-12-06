@@ -11,13 +11,22 @@ namespace ejemplo.Models
     {
         // para model to view
         // [Required]
-        public List<Usuario> usuarios { get; set; }
-        public List<Libro> libros { get; set; }
-
-        // para view to model
-        public int UsuarioId { get; set; }
-        public int LibroId { get; set; }
-        public int cantEjemplares { get; set; }
+        public int PrestamoId { get; set; }
+        public bool devuelto { get; set; }
+        public String fechaPrestamoString { get; set; }
         public DateTime fechaPrestamo { get; set; }
+        public String fechaDevolucionString { get; set; }
+        public DateTime fechaDevolucion { get; set; }
+        public int UsuarioId { get; set; }
+        public Usuario usuario { get; set; }
+        public int LibroId { get; set; }
+        public Libro libro { get; set; }
+        public List<UsuarioViewModel> usuarios { get; set; }
+        public List<LibroViewModel> libros { get; set; }
+
+        public PrestamoViewModel()
+        {
+        }
+
     }
 }

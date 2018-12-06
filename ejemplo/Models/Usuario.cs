@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ejemplo.Models
-{
-    public class Usuario
-    {
+namespace ejemplo.Models {
+    public class Usuario {
         public int UsuarioId { get; set; }
         public String tipoDocumento { get; set; }
         public int numeroDocumento { get; set; }
@@ -18,7 +16,7 @@ namespace ejemplo.Models
         public String calle { get; set; }
         public int numero { get; set; }
         public int telefono { get; set; }
-        public List<Prestamo> prestamos { get; set; }
+        //public List<Prestamo> prestamos { get; set; }
 
         public Usuario(int UsuarioId, string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
         {

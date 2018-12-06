@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ejemplo.Models.LibroViewModel>
+﻿@model ejemplo.Models.LibroViewModel
 @{
     ViewBag.Title = "Buscar Titulo";
 }
@@ -13,13 +13,14 @@
             <form class="formBuscadorPorTitulo" method="post" action="">
                 <div class="form-group">
                     <label for="nombre">Titulo</label>
-                    <input type="text" class="form-control validacion-texto" id="titulo" placeholder="El gato negro">
+                    @Html.TextBoxFor(m => m.titulo, new { @class = "form-control validacion-texto", placeholder = "El gato Negro" })
+                    @*<input type="text" class="form-control validacion-texto" id="titulo" placeholder="El gato negro">*@
                 </div>
                 <div class="form-group"><button type="submit" class="btn btn-primary btnBuscadorPorTitulo">Buscar</button></div>
             </form>
             @if (Model != null)
             {
-                if (Model.Count() > 0)
+                if (Model.lista.Count() > 0)
                 {
                     <div class="table-responsive">
                         <table class="table table-striped table-hover">
@@ -32,7 +33,7 @@
                                 <th>Cantidad de Ejemplares</th>
                                 <th>Acciones</th>
                             </tr>
-                            @foreach (var libro in Model)
+                            @foreach (var libro in Model.lista)
                             {
                                 <tr>
                                     <td>@Html.DisplayFor(modelItem => libro.LibroId)</td>

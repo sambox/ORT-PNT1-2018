@@ -88,14 +88,19 @@ namespace ejemplo.Services {
             List<Libro> l;
             using (var ctx = new BibliotecaContext())
             {
-                l = ctx.Libros.Where(x=>x.titulo == titulo).ToList();
+                l = ctx.Libros.Where(x=>x.titulo.ToLower().Contains(titulo.ToLower())).ToList();
             }
             return mapper(l);
         }
 
         public static List<LibroViewModel> findLibroByAutor(String autor)
         {
-            return null;
+            List<Libro> l;
+            using (var ctx = new BibliotecaContext())
+            {
+                l = ctx.Libros.Where(x => x.autor.ToLower().Contains(autor.ToLower())).ToList();
+            }
+            return mapper(l);
         }
 
     }

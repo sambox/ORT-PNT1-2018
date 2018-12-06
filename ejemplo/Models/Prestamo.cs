@@ -11,8 +11,18 @@ namespace ejemplo.Models
         public bool devuelto { get; set; }
         public DateTime fechaPrestamo { get; set; }
         public DateTime fechaDevolucion { get; set; }
-        public Usuario usuario { get; set; }
-        public Libro libro { get; set; }
+        public virtual Usuario usuario { get; set; }
+        public virtual Libro libro { get; set; }
+
+        public Prestamo(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, Usuario usuario, Libro libro)
+        {
+            PrestamoId = prestamoId;
+            this.devuelto = devuelto;
+            this.fechaPrestamo = fechaPrestamo;
+            this.fechaDevolucion = fechaDevolucion;
+            this.usuario = usuario;
+            this.libro = libro;
+        }
 
         public Prestamo(bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, Usuario usuario, Libro libro)
         {

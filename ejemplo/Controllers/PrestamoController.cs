@@ -1,4 +1,5 @@
 ﻿using ejemplo.Models;
+using ejemplo.Services;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,12 +12,7 @@ namespace ejemplo.Controllers {
         // GET: Prestamo
         public ActionResult Listar()
         {
-            using (var ctx = new BibliotecaContext())
-            {
-                var lista = ctx.Prestamos.ToList();
-
-            }
-            return View();
+            return View(PrestamoService.findAll());
         }
         public ActionResult ListarNoDevueltos()
         {
@@ -24,35 +20,13 @@ namespace ejemplo.Controllers {
         }
         public ActionResult NuevoPrestamo()
         {
-            PrestamoViewModel npvm = new PrestamoViewModel();
-            npvm.usuarios = getUsuarios();
-            npvm.libros = getLibros();
-            return View(npvm);
-        }
-
-        private List<Libro> getLibros()
-        {
-            List<Libro> libros;
-            using (var ctx = new BibliotecaContext())
-            {
-                libros = ctx.Libros.ToList();
-            }
-            return libros;
-        }
-
-        private List<Usuario> getUsuarios()
-        {
-            List<Usuario> usuarios;
-            using (var ctx = new BibliotecaContext())
-            {
-                usuarios = ctx.Usuarios.ToList();
-            }
-            return usuarios;
+            return View(PrestamoService.getFormData());
         }
 
         [HttpPost]
-        public ActionResult NuevoPrestamo(PrestamoViewModel p)
+        public ActionResult NuevoPrestamo(PrestamoViewModel pvm)
         {
+            PrestamoService.add(pvm);
             /*using (var ctx = new BibliotecaContext())
             {
                 List<Prestamo> p = new List<Prestamo>();
@@ -68,7 +42,7 @@ namespace ejemplo.Controllers {
                 ctx.Prestamos.Add(prest);
                 ctx.SaveChanges();                
             }*/
-            return View();
+            return View(PrestamoService.getFormData());
         }
 
         public ActionResult PrestamoPorDNI()

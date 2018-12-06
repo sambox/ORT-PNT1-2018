@@ -5,8 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 
 namespace ejemplo.Controllers {
-    public class LibroController : Controller
-    {
+    public class LibroController : Controller {
         // GET: Libro
         public ActionResult Listar()
         {
@@ -62,12 +61,20 @@ namespace ejemplo.Controllers {
         [HttpPost]
         public ActionResult BuscarTitulo(LibroViewModel lvm)
         {
-            return View(LibroService.findLibroByTitulo(lvm.titulo));
+            lvm.lista = LibroService.findLibroByTitulo(lvm.titulo);
+            return View(lvm);
         }
 
         public ActionResult BuscarAutor()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuscarAutor(LibroViewModel lvm)
+        {
+            lvm.lista = LibroService.findLibroByAutor(lvm.autor);
+            return View(lvm);
         }
     }
 }

@@ -171,6 +171,7 @@
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\LibroService.cs" />
+    <Compile Include="Services\PrestamoService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>

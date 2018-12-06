@@ -10,12 +10,7 @@ namespace ejemplo.Controllers {
         // GET: Libro
         public ActionResult Listar()
         {
-            List<Libro> l;
-            using (var ctx = new BibliotecaContext())
-            {
-                l = ctx.Libros.ToList();
-            }
-            return View(l);
+            return View(LibroService.findAll());
         }
 
         public ActionResult NuevoLibro()
@@ -24,67 +19,33 @@ namespace ejemplo.Controllers {
         }
 
         [HttpPost]
-        public ActionResult NuevoLibro(LibroViewModel libroView)
+        public ActionResult NuevoLibro(LibroViewModel lvm)
         {
-            using (var ctx = new BibliotecaContext())
-            {
-                ctx.Libros.Add(new Libro(libroView.titulo, libroView.autor, libroView.genero, libroView.isbn, libroView.cantEjemplares));
-                ctx.SaveChanges();
-            }
+            LibroService.add(lvm);
             return volverAlListado();
         }
 
         public ActionResult Modificar(int LibroId)
         {
-            Libro l = LibroService.getLibroById(LibroId);
-            LibroViewModel lvm = new LibroViewModel();
-            lvm.autor = l.autor;
-            lvm.cantEjemplares = l.cantEjemplares;
-            lvm.titulo = l.titulo;
-            lvm.genero = l.genero;
-            lvm.isbn = l.isbn;
-            lvm.LibroId = l.LibroID;
-            return View(lvm);
+            return View(LibroService.findLibroById(LibroId));
         }
 
         [HttpPost]
-        public ActionResult Modificar(LibroViewModel lv)
+        public ActionResult Modificar(LibroViewModel lvm)
         {
-            using (var ctx = new BibliotecaContext())
-            {
-                Libro l = ctx.Libros.SingleOrDefault(b => b.LibroID == lv.LibroId);
-                if(l!=null)
-                {
-                    l.titulo = lv.titulo;
-                    l.autor = lv.titulo;
-                    l.isbn = lv.isbn;
-                    l.genero = lv.genero;
-                    l.cantEjemplares = lv.cantEjemplares;
-                    ctx.SaveChanges();
-                }
-            }
+            LibroService.update(lvm);
             return volverAlListado();
         }
 
         public ActionResult Eliminar(int LibroId)
         {
-            Libro l = LibroService.getLibroById(LibroId);
-            LibroViewModel libroView = new LibroViewModel();
-            libroView.LibroId = LibroId;
-            libroView.titulo = l.titulo;
-            libroView.autor = l.autor;
-            return View(libroView);
+            return View(LibroService.findLibroById(LibroId));
         }
 
         [HttpPost]
-        public ActionResult EliminarAction(LibroViewModel libroView)
+        public ActionResult EliminarAction(LibroViewModel lvm)
         {
-            using (var ctx = new BibliotecaContext())
-            {
-                Libro l = ctx.Libros.Where(b => b.LibroID == libroView.LibroId).FirstOrDefault();
-                ctx.Libros.Remove(l);
-                ctx.SaveChanges();
-            }
+            LibroService.remove(lvm.LibroId);
             return volverAlListado();
         }
 
@@ -96,6 +57,12 @@ namespace ejemplo.Controllers {
         public ActionResult BuscarTitulo()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult BuscarTitulo(LibroViewModel lvm)
+        {
+            return View(LibroService.findLibroByTitulo(lvm.titulo));
         }
 
         public ActionResult BuscarAutor()

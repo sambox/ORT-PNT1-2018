@@ -17,15 +17,15 @@
         @foreach (var libro in Model)
         {
             <tr>
-                <td>@Html.DisplayFor(modelItem => libro.LibroID)</td>
+                <td>@Html.DisplayFor(modelItem => libro.LibroId)</td>
                 <td>@Html.DisplayFor(modelItem => libro.titulo)</td>
                 <td>@Html.DisplayFor(modelItem => libro.autor)</td>
                 <td>@Html.DisplayFor(modelItem => libro.genero)</td>
                 <td>@Html.DisplayFor(modelItem => libro.isbn)</td>
                 <td>@Html.DisplayFor(modelItem => libro.cantEjemplares)</td>
                 <td>
-                    @Html.ActionLink("Modificar", "Modificar", "Libro", new { LibroId = libro.LibroID }, null)
-                    @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { LibroId = libro.LibroID }, null)
+                    @Html.ActionLink("Modificar", "Modificar", "Libro", new { LibroId = libro.LibroId }, null)
+                    @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { LibroId = libro.LibroId }, null)
                 </td>
             </tr>
         }

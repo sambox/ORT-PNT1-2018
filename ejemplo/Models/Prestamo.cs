@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,7 +12,9 @@ namespace ejemplo.Models
         public bool devuelto { get; set; }
         public DateTime fechaPrestamo { get; set; }
         public DateTime fechaDevolucion { get; set; }
+        [ForeignKey("usuario")]
         public virtual Usuario usuario { get; set; }
+        [ForeignKey("libro")]
         public virtual Libro libro { get; set; }
 
         public Prestamo(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, Usuario usuario, Libro libro)

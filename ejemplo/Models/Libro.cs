@@ -14,6 +14,8 @@ namespace ejemplo.Models
         public String isbn { get; set; }
         public int cantEjemplares { get; set; }
 
+        public virtual ICollection<Prestamo> Prestamos { get; set; }
+
         public Libro(string titulo, string autor, string genero, string isbn, int cantEjemplares)
         {
             this.titulo = titulo;
@@ -21,6 +23,7 @@ namespace ejemplo.Models
             this.genero = genero;
             this.isbn = isbn;
             this.cantEjemplares = cantEjemplares;
+            this.Prestamos = new HashSet<Prestamo>();
         }
 
         public Libro(int LibroID, string titulo, string autor, string genero, string isbn, int cantEjemplares)
@@ -31,10 +34,12 @@ namespace ejemplo.Models
             this.genero = genero;
             this.isbn = isbn;
             this.cantEjemplares = cantEjemplares;
+            this.Prestamos = new HashSet<Prestamo>();
         }
 
         public Libro()
         {
+            this.Prestamos = new HashSet<Prestamo>();
         }
     }
 }

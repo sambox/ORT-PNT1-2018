@@ -12,31 +12,29 @@ namespace ejemplo.Models
         public bool devuelto { get; set; }
         public DateTime fechaPrestamo { get; set; }
         public DateTime fechaDevolucion { get; set; }
-        [ForeignKey("usuario")]
-        public virtual Usuario usuario { get; set; }
-        [ForeignKey("libro")]
-        public virtual Libro libro { get; set; }
+        public int libro_LibroID { get; set; }
+        public int usuario_UsuarioId { get; set; }
 
-        public Prestamo(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, Usuario usuario, Libro libro)
+        public Prestamo(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, int usuarioId, int libroId)
         {
             PrestamoId = prestamoId;
             this.devuelto = devuelto;
             this.fechaPrestamo = fechaPrestamo;
             this.fechaDevolucion = fechaDevolucion;
-            this.usuario = usuario;
-            this.libro = libro;
+            this.usuario_UsuarioId = usuarioId;
+            this.libro_LibroID = libroId;
         }
 
-        public Prestamo(bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion, Usuario usuario, Libro libro)
+        public Prestamo(bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion)
         {
             this.devuelto = devuelto;
             this.fechaPrestamo = fechaPrestamo;
             this.fechaDevolucion = fechaDevolucion;
-            this.usuario = usuario;
-            this.libro = libro;
+
         }
 
-        public Prestamo() {
+        public Prestamo()
+        {
 
         }
     }

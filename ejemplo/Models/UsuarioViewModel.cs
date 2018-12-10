@@ -19,7 +19,9 @@ namespace ejemplo.Models
         public int numero { get; set; }
         public int telefono { get; set; }
 
-        public UsuarioViewModel(int usuarioId, string tipoDocumento, int numeroDocumento, string nombre, 
+        public string ApellidoNombre { get; set; }
+
+        public UsuarioViewModel(int usuarioId, string tipoDocumento, int numeroDocumento, string nombre,
             string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
         {
             this.UsuarioId = usuarioId;
@@ -33,6 +35,7 @@ namespace ejemplo.Models
             this.calle = calle;
             this.numero = numero;
             this.telefono = telefono;
+            this.ApellidoNombre = String.Format("{0} {1}", nombre, apellido);
         }
 
         public UsuarioViewModel(string tipoDocumento, int numeroDocumento, string nombre,
@@ -48,6 +51,7 @@ namespace ejemplo.Models
             this.calle = calle;
             this.numero = numero;
             this.telefono = telefono;
+            this.ApellidoNombre = String.Format("{0} {1}", nombre, apellido);
         }
 
         public UsuarioViewModel()

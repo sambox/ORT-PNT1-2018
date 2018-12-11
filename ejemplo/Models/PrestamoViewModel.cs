@@ -29,6 +29,7 @@ namespace ejemplo.Models
         public Libro libro { get; set; }
         public List<UsuarioViewModel> usuarios { get; set; }
         public List<LibroViewModel> libros { get; set; }
+        public List<PrestamoViewModel> lista;
 
         public PrestamoViewModel(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion)
         {

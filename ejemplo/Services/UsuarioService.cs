@@ -11,19 +11,32 @@ namespace ejemplo.Services {
             List<UsuarioViewModel> uvms = new List<UsuarioViewModel>();
             foreach (var u in usuarios)
             {
-                uvms.Add(new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono));
+                if(u != null)
+                {
+                    uvms.Add(new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono));
+                }
             }
             return uvms;
         }
 
         public static UsuarioViewModel mapper(Usuario u)
         {
-            return new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono);
+            UsuarioViewModel uvm = null;
+            if( u != null)
+            {
+                uvm = new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono);
+            }
+            return uvm;
         }
 
-        public static Usuario mapper(UsuarioViewModel u)
+        public static Usuario mapper(UsuarioViewModel uvm)
         {
-            return new Usuario(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono);
+            Usuario u = null;
+            if(uvm != null)
+            {
+                u = new Usuario(uvm.UsuarioId, uvm.tipoDocumento, uvm.numeroDocumento, uvm.nombre, uvm.apellido, uvm.email, uvm.password, uvm.localidad, uvm.calle, uvm.numero, uvm.telefono);
+            }
+            return u;
         }
 
         public static UsuarioViewModel findUsuarioById(int usuarioId)
@@ -90,7 +103,8 @@ namespace ejemplo.Services {
             List<Usuario> ul;
             using (var ctx = new BibliotecaContext())
             {
-                ul = ctx.Usuarios.Where(x => x.numeroDocumento.CompareTo(numeroDocumento) > 0).ToList();
+                //ul = ctx.Usuarios.SingleOrDefault(b => b.numeroDocumento == numeroDocumento);
+                ul = ctx.Usuarios.Where(x => x.numeroDocumento.ToString().Contains(numeroDocumento.ToString())).ToList();
             }
             return mapper(ul);
         }

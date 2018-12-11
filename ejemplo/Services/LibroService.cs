@@ -12,19 +12,32 @@ namespace ejemplo.Services {
             List<LibroViewModel> lvms = new List<LibroViewModel>();
             foreach (var l in libros)
             {
-                lvms.Add(new LibroViewModel(l.LibroID, l.titulo, l.autor, l.isbn, l.genero, l.cantEjemplares));
+                if (l != null)
+                {
+                    lvms.Add(new LibroViewModel(l.LibroID, l.titulo, l.autor, l.isbn, l.genero, l.cantEjemplares));
+                }
             }
             return lvms;
         }
 
         public static LibroViewModel mapper(Libro l)
         {
-            return new LibroViewModel(l.LibroID, l.titulo, l.autor, l.isbn, l.genero, l.cantEjemplares);
+            LibroViewModel lvm = null;
+            if (l != null)
+            {
+                lvm = new LibroViewModel(l.LibroID, l.titulo, l.autor, l.isbn, l.genero, l.cantEjemplares);
+            }
+            return lvm;
         }
 
-        public static Libro mapper(LibroViewModel l)
+        public static Libro mapper(LibroViewModel lvm)
         {
-            return new Libro(l.LibroId, l.titulo, l.autor, l.isbn, l.genero, l.cantEjemplares);
+            Libro l = null;
+            if(lvm != null)
+            {
+                l = new Libro(lvm.LibroId, lvm.titulo, lvm.autor, lvm.isbn, lvm.genero, lvm.cantEjemplares);
+            }
+            return l;
         }
 
         public static void add(LibroViewModel lvm)

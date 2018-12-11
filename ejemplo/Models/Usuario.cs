@@ -19,7 +19,7 @@ namespace ejemplo.Models
         public int numero { get; set; }
         public int telefono { get; set; }
         //public List<Prestamo> prestamos { get; set; }
-        public virtual List<Prestamo> Prestamos { get; set; }
+        //public virtual List<Prestamo> Prestamos { get; set; }
 
         public Usuario(int UsuarioId, string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
         {
@@ -34,7 +34,7 @@ namespace ejemplo.Models
             this.calle = calle;
             this.numero = numero;
             this.telefono = telefono;
-            this.Prestamos = new List<Prestamo>();
+            //this.Prestamos = new List<Prestamo>();
         }
 
         public Usuario(string tipoDocumento, int numeroDocumento, string nombre, string apellido, string email, string password, string localidad, string calle, int numero, int telefono)
@@ -49,12 +49,12 @@ namespace ejemplo.Models
             this.calle = calle;
             this.numero = numero;
             this.telefono = telefono;
-            this.Prestamos = new List<Prestamo>();
+            //this.Prestamos = new List<Prestamo>();
         }
 
         public Usuario()
         {
-            this.Prestamos = new List<Prestamo>();
+            //this.Prestamos = new List<Prestamo>();
         }
     }
 }

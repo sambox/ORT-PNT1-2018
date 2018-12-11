@@ -9,8 +9,9 @@ namespace ejemplo.Controllers {
     public class UsuarioController : Controller {
         public ActionResult Listar()
         {
-            
-            return View(UsuarioService.findAll());
+            UsuarioViewModel uvm = new UsuarioViewModel();
+            uvm.lista = UsuarioService.findAll();
+            return View(uvm);
         }
 
         public ActionResult NuevoUsuario()
@@ -24,7 +25,7 @@ namespace ejemplo.Controllers {
         {
             @ViewBag.Title = "Nuevo Usuario";
             UsuarioService.add(uvm);
-            return View();
+            return volverAlListado();
         }
 
         public ActionResult Modificar(int UsuarioId)
@@ -65,8 +66,9 @@ namespace ejemplo.Controllers {
         [HttpPost]
         public ActionResult BuscarUsuario(UsuarioViewModel uvm)
         {
-            @ViewBag.Title = "Buscar Usuario Por número de documento";
-            return View(UsuarioService.findByNumeroDocumento(uvm.numeroDocumento));
+            @ViewBag.Title = "Buscar Usuario por número de documento";
+            uvm.lista = UsuarioService.findByNumeroDocumento(uvm.numeroDocumento);
+            return View(uvm);
         }
 
     }

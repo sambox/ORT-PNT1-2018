@@ -1,11 +1,4 @@
-﻿@*<script type="text/javascript">
-    $(document).ready(function () {
-        $("#fechaPrestamo").datepicker();
-    });
-</script>*@
-
-
-@model ejemplo.Models.PrestamoViewModel
+﻿@model ejemplo.Models.PrestamoViewModel
 @{
     ViewBag.Title = "Nuevo Prestamo";
 }
@@ -22,34 +15,16 @@
                     @Html.LabelFor(x => x.UsuarioId)
                     @Html.DropDownListFor(x => x.UsuarioId, new SelectList(Model.usuarios, "UsuarioId", "ApellidoNombre"), "Seleccionar", new { @class = "form-control validacion-combo" })
                     @Html.ValidationMessageFor(x => x.UsuarioId)
-                    @*<label for="nroDocUsuario">Usuario</label>
-                        <select class="form-control validacion-combo" id="nroDocUsuario" name="UsuarioId">
-                            <option value="0">Seleccionar</option>
-                            @foreach (var usuario in Model.usuarios)
-                            {
-                                <option value="@Html.DisplayFor(modelItem => usuario.UsuarioId)">@Html.DisplayFor(modelItem => usuario.nombre) @Html.DisplayFor(modelItem => usuario.apellido)</option>
-                            }
-                        </select>*@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.LibroId)
                     @Html.DropDownListFor(x => x.LibroId, new SelectList(Model.libros, "LibroId", "nombre"), "Seleccionar", new { @class = "form-control validacion-combo" })
                     @Html.ValidationMessageFor(x => x.LibroId)
-                    @*<label for="isbnLibro">Libro</label>
-                        <select class="form-control validacion-combo" id="isbnLibro" name="LibroId">
-                            <option value="0">Seleccionar</option>
-                            @foreach (var libro in Model.libros)
-                            {
-                                <option value="@Html.DisplayFor(modelItem => libro.LibroId)">@Html.DisplayFor(modelItem => libro.titulo) - @Html.DisplayFor(modelItem => libro.autor)</option>
-                            }
-                        </select>*@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.fechaPrestamo)
                     @Html.TextBoxFor(x => x.fechaPrestamo, "{0:dd/MM/yyyy}", new { @placeholder = "dd/mm/yyyy", @class = "form-control validacion-fecha" })
                     @Html.ValidationMessageFor(x => x.fechaPrestamo)
-                    @*<label for="fecha Prestamo">Fecha Prestamo</label>
-                        <input type="text" class="form-control validacion-fecha" id="fechaPrestamo" name="fechaPrestamoString" placeholder="dd/mm/yyyy">*@
                 </div>
                 <div class="form-group"><button type="submit" class="btn btn-primary" id="">Guardar</button></div>
             </form>

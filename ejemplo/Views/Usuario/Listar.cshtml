@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ejemplo.Models.UsuarioViewModel>
+﻿@model ejemplo.Models.UsuarioViewModel
 @{
     ViewBag.Title = "Usuarios";
 }
@@ -14,7 +14,7 @@
             <th>Numero Documento</th>
             <th>Acciones</th>
         </tr>
-        @foreach (var usuario in Model)
+        @foreach (var usuario in Model.lista)
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => usuario.UsuarioId)</td>

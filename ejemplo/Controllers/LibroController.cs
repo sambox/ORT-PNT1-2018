@@ -9,7 +9,9 @@ namespace ejemplo.Controllers {
         // GET: Libro
         public ActionResult Listar()
         {
-            return View(LibroService.findAll());
+            LibroViewModel lvm = new LibroViewModel();
+            lvm.lista = LibroService.findAll();
+            return View(lvm);
         }
 
         public ActionResult NuevoLibro()

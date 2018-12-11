@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ejemplo.Models.LibroViewModel>
+﻿@model ejemplo.Models.LibroViewModel
 @{
     ViewBag.Title = "Libros";
 }
@@ -14,7 +14,7 @@
             <th>Cantidad de Ejemplares</th>
             <th>Acciones</th>
         </tr>
-        @foreach (var libro in Model)
+        @foreach (var libro in Model.lista)
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => libro.LibroId)</td>

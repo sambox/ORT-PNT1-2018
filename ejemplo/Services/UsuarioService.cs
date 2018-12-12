@@ -39,7 +39,7 @@ namespace ejemplo.Services {
             return u;
         }
 
-        public static UsuarioViewModel findUsuarioById(int usuarioId)
+        public static UsuarioViewModel findById(int usuarioId)
         {
             Usuario u;
             using (var ctx = new BibliotecaContext())

@@ -14,7 +14,9 @@ namespace ejemplo.Controllers
         // GET: Prestamo
         public ActionResult Listar()
         {
-            return View(PrestamoService.findAll());
+            PrestamoViewModel pvm = new PrestamoViewModel();
+            pvm.lista = PrestamoService.findAll();
+            return View(pvm);
         }
         public ActionResult ListarNoDevueltos()
         {

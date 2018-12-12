@@ -36,12 +36,10 @@ namespace ejemplo.Services
             {
                 Prestamo p = mapper(pvm);
                 p.fechaDevolucion = DateTime.MaxValue;
-                // PREGUNTAR ESTO
                 ctx.Entry(p).State = EntityState.Added;
                 //ctx.Prestamos.Add(p);
                 ctx.SaveChanges();
             }
-
         }
 
         public static void update(PrestamoViewModel pvm)
@@ -87,7 +85,13 @@ namespace ejemplo.Services
             {
                 ps = ctx.Prestamos.ToList();
             }
-            return mapper(ps);
+            List<PrestamoViewModel> pvms = mapper(ps);
+            foreach (var p in pvms)
+            {
+                p.usuario = UsuarioService.findById(p.UsuarioId);
+                p.libro = LibroService.findById(p.LibroId);
+            }
+            return pvms;
         }
     }
 }

@@ -55,21 +55,6 @@ function validacionFecha(e) {
 }
 
 $(document).ready(function () {
-    //modal
-    $("#btnNuevoUsuario").on("click", function (event) {
-        event.preventDefault();
-        $('#modalNuevoUsuario').modal('show');
-    });
-
-    $("#btnNuevoLibro").on("click", function (event) {
-        event.preventDefault();
-        $('#modalNuevoLibro').modal('show');
-    });
-
-    $("#btnNuevoPrestamo").on("click", function (event) {
-        event.preventDefault();
-        $('#modalNuevoPrestamo').modal('show');
-    });
 
     // validaciones
     $(".validacion-texto").on("blur keyup", function (event) {
@@ -102,7 +87,7 @@ $(document).ready(function () {
         mostrarError($(this), validacionFecha($(this)));
     });
 
-    $("#btnNuevoUsuario").on("click", function (event) {
+    $(".btnNuevoUsuario").on("click", function (event) {
         event.preventDefault();
         let error = false;
         let form = $("#formNuevoUsuario");
@@ -118,24 +103,28 @@ $(document).ready(function () {
         } else {
             mostrarError(nombre, false);
         }
+
         if (validacionTexto(apellido)) {
             mostrarError(apellido, true);
             error = true;
         } else {
             mostrarError(apellido, false);
         }
+
         if (validacionEmail(email)) {
             mostrarError(email, true);
             error = true;
         } else {
             mostrarError(email, false);
         }
+
         if (validacionCombo(tipoDoc)) {
             mostrarError(tipoDoc, true);
             error = true;
         } else {
             mostrarError(tipoDoc, false);
         }
+
         if (validacionNumerica(nroDoc) || nroDoc.val().length < 8) {
             mostrarError(nroDoc, true);
             error = true;
@@ -166,7 +155,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#btnNuevoLibro").on("click", function (event) {
+    $(".btnNuevoLibro").on("click", function (event) {
         event.preventDefault();
         let error = false;
         let form = $("#formNuevoLibro");

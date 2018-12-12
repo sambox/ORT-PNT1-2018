@@ -28,7 +28,7 @@ namespace ejemplo.Controllers {
 
         public ActionResult Modificar(int LibroId)
         {
-            return View(LibroService.findLibroById(LibroId));
+            return View(LibroService.findById(LibroId));
         }
 
         [HttpPost]
@@ -40,7 +40,7 @@ namespace ejemplo.Controllers {
 
         public ActionResult Eliminar(int LibroId)
         {
-            return View(LibroService.findLibroById(LibroId));
+            return View(LibroService.findById(LibroId));
         }
 
         [HttpPost]

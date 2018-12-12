@@ -86,7 +86,7 @@ namespace ejemplo.Services {
             return mapper(l);
         }
 
-        public static LibroViewModel findLibroById(int LibroId)
+        public static LibroViewModel findById(int LibroId)
         {
             Libro l;
             using (var ctx = new BibliotecaContext())

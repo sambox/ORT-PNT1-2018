@@ -1,121 +1,42 @@
-﻿
-@{
-    ViewBag.Title = "Listar";
-}
-
+﻿@model ejemplo.Models.PrestamoViewModel
 <h2>Listar</h2>
-
-
-<main>
+<div class="table-responsive">
     <table class="table table-striped table-hover">
         <tr>
             <th>Titulo Libro</th>
             <th>Autor/es</th>
-            <th>Tipo Documento</th>
-            <th>Numero Documento</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
+            <th>Usuario</th>
+            <th>Tipo y Nro Documento</th>
             <th>Fecha Prestamo</th>
             <th>Fecha Devolucion</th>
             <th>Devuelto</th>
+            <th>Acciones</th>
         </tr>
-        <tr>
-            <td>cont 1</td>
-            <td>cont 2</td>
-            <td>cont 3</td>
-            <td>cont 4</td>
-            <td>cont 5</td>
-            <td>cont 6</td>
-            <td>cont 7</td>
-            <td>cont 8</td>
-            <td><input type="checkbox" name=""> </td>
-        </tr>
-        <tr>
-            <td>cont 1</td>
-            <td>cont 2</td>
-            <td>cont 3</td>
-            <td>cont 4</td>
-            <td>cont 5</td>
-            <td>cont 6</td>
-            <td>cont 7</td>
-            <td>cont 8</td>
-            <td><input type="checkbox" name=""> </td>
-        </tr>
-        <tr>
-            <td>cont 1</td>
-            <td>cont 2</td>
-            <td>cont 3</td>
-            <td>cont 4</td>
-            <td>cont 5</td>
-            <td>cont 6</td>
-            <td>cont 7</td>
-            <td>cont 8</td>
-            <td><input type="checkbox" name=""> </td>
-        </tr>
+        @foreach (var p in Model.lista)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => p.libro.titulo)</td>
+                <td>@Html.DisplayFor(modelItem => p.libro.autor)</td>
+                <td>@Html.DisplayFor(modelItem => p.usuario.nombreApellido)</td>
+                <td>@Html.DisplayFor(modelItem => p.usuario.tipoNumeroDocumento)</td>
+                <td>@Html.DisplayFor(modelItem => p.fechaPrestamo)</td>
+                <td>@Html.DisplayFor(modelItem => p.fechaDevolucion)</td>
+                <td>
+                    @if (p.devuelto)
+                    {
+                        @:SI
+                    }
+                    else
+                    {
+                        @:NO 
+                    }
+                    </td>
+                <td>
+                    @Html.ActionLink("Devolver", "Devolver", "Prestamo", new { PrestamoId = p.PrestamoId }, null)
+                    @Html.ActionLink("Modificar", "Modificar", "Prestamo", new { PrestamoId = p.PrestamoId }, null)
+                </td>
+            </tr>
+        }
+
     </table>
-</main>
-
-<div class="modal fade" tabindex="-1" role="dialog" id="modalNuevoPrestamo">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Nuevo libro</h4>
-            </div>
-            <div class="modal-body">
-
-                <form>
-                    <div class="form-group">
-                        <label for="titulo">Titulo</label>
-                        <input type="text" class="form-control validacion-vacio" id="titulo" placeholder="Libro">
-                    </div>
-                    <div class="form-group">
-                        <label for="autor">Autor</label>
-                        <input type="text" class="form-control validacion-texto" id="autor" placeholder="Perez">
-                    </div>
-                    <div class="form-group">
-                        <label for="isbn">Tipo Documento</label>
-                        <select class="form-control validacion-combo" id="tipoDni">
-                            <option value="0">Seleccionar</option>
-                            <option value="dni">DNI</option>
-                            <option value="pas">Pasaporte</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="dni">Número documento</label>
-                        <input type="text" class="form-control validacion-numerica" id="dni" placeholder="12341234">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ejemplares">Ejemplares</label>
-                        <input type="text" class="form-control validacion-numerica" id="ejemplares" placeholder="8">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control validacion-texto" id="nombre" placeholder="Juan">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre">Apellido</label>
-                        <input type="text" class="form-control validacion-texto" id="nombre" placeholder="Juan">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre">FechaPrestamos</label>
-                        <input type="text" class="form-control validacion-fecha" id="FechaPrestamos" placeholder="10/12/2018">
-                    </div>
-                    <div class="form-group">
-                        <label for="nombre">FechaPrestamos</label>
-                        <input type="text" class="form-control validacion-fecha" id="FechaPrestamos" placeholder="10/12/2018">
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
-
-
-            </body>
-
-            </html>
+</div>

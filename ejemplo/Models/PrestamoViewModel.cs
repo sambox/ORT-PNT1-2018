@@ -22,11 +22,11 @@ namespace ejemplo.Models
         [Display(Name = "Usuario"),
          Required(ErrorMessage = "Es obligaotrio seleccionar un usuario")]
         public int UsuarioId { get; set; }
-        public Usuario usuario { get; set; }
+        public UsuarioViewModel usuario { get; set; }
         [Display(Name = "Libro"),
          Required(ErrorMessage = "Es obligaotrio seleccionar un libro")]
         public int LibroId { get; set; }
-        public Libro libro { get; set; }
+        public LibroViewModel libro { get; set; }
         public List<UsuarioViewModel> usuarios { get; set; }
         public List<LibroViewModel> libros { get; set; }
         public List<PrestamoViewModel> lista;

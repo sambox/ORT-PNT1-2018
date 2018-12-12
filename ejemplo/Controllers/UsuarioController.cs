@@ -30,7 +30,7 @@ namespace ejemplo.Controllers {
 
         public ActionResult Modificar(int UsuarioId)
         {
-            return View(UsuarioService.findUsuarioById(UsuarioId));
+            return View(UsuarioService.findById(UsuarioId));
         }
 
         [HttpPost]
@@ -42,7 +42,7 @@ namespace ejemplo.Controllers {
 
         public ActionResult Eliminar(int UsuarioId)
         {
-            return View(UsuarioService.findUsuarioById(UsuarioId));
+            return View(UsuarioService.findById(UsuarioId));
         }
 
         [HttpPost]

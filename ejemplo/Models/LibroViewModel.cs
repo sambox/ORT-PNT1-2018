@@ -14,7 +14,7 @@ namespace ejemplo.Models
         public string genero { get; set; }
         public int cantEjemplares { get; set; }
         public List<LibroViewModel> lista { get; set; }
-        public string nombre { get; set; }
+        public string tituloAutor { get; set; }
 
         public LibroViewModel(int libroId, string titulo, string autor, string isbn, string genero, int cantEjemplares)
         {
@@ -25,7 +25,7 @@ namespace ejemplo.Models
             this.genero = genero;
             this.cantEjemplares = cantEjemplares;
             this.lista = new List<LibroViewModel>();
-            this.nombre = String.Format("{0} - {1}", titulo, autor);
+            this.tituloAutor = String.Format("{0} - {1}", titulo, autor);
         }
 
         public LibroViewModel()

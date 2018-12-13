@@ -46,7 +46,7 @@ namespace ejemplo.Controllers {
         }
 
         [HttpPost]
-        public ActionResult EliminarAction(UsuarioViewModel uvm)
+        public ActionResult Eliminar(UsuarioViewModel uvm)
         {
             UsuarioService.remove(uvm.UsuarioId);
             return volverAlListado();

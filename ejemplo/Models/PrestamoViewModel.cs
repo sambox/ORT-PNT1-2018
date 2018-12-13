@@ -9,16 +9,16 @@ namespace ejemplo.Models
 
     public class PrestamoViewModel
     {
-        // para model to view
-        // [Required]
         public int PrestamoId { get; set; }
         public bool devuelto { get; set; }
         public String fechaPrestamoString { get; set; }
         [Display(Name = "Fecha Prestamo"),
-         Required(ErrorMessage = "Es obligaotrio seleccionar una fecha")]
+         Required(ErrorMessage = "Es obligatorio seleccionar una fecha")]
         public DateTime fechaPrestamo { get; set; }
-        public String fechaDevolucionString { get; set; }
-        public DateTime fechaDevolucion { get; set; }
+        public String fechaDevolucionTopeString { get; set; }
+        public DateTime fechaDevolucionTope { get; set; }
+        public String fechaDevolucionRealString { get; set; }
+        public DateTime fechaDevolucionReal { get; set; }
         [Display(Name = "Usuario"),
          Required(ErrorMessage = "Es obligaotrio seleccionar un usuario")]
         public int UsuarioId { get; set; }
@@ -31,12 +31,15 @@ namespace ejemplo.Models
         public List<LibroViewModel> libros { get; set; }
         public List<PrestamoViewModel> lista;
 
-        public PrestamoViewModel(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucion)
+        public PrestamoViewModel(int prestamoId, bool devuelto, DateTime fechaPrestamo, DateTime fechaDevolucionTope, DateTime fechaDevolucionReal, int usuarioId, int libroId)
         {
             this.PrestamoId = prestamoId;
             this.devuelto = devuelto;
             this.fechaPrestamo = fechaPrestamo;
-            this.fechaDevolucion = fechaDevolucion;
+            this.fechaDevolucionTope = fechaDevolucionTope;
+            this.fechaDevolucionReal = fechaDevolucionReal;
+            this.UsuarioId = usuarioId;
+            this.LibroId = libroId;
         }
 
         public PrestamoViewModel() { }

@@ -1,33 +1,50 @@
 ﻿using ejemplo.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Data.Entity;
 
-namespace ejemplo.Services
-{
-    public class PrestamoService
-    {
+namespace ejemplo.Services {
+    public class PrestamoService {
         public static List<PrestamoViewModel> mapper(List<Prestamo> ps)
         {
             List<PrestamoViewModel> pvms = new List<PrestamoViewModel>();
+            PrestamoViewModel pvm;
             foreach (var p in ps)
             {
-                pvms.Add(new PrestamoViewModel(p.PrestamoId, p.devuelto, p.fechaPrestamo, p.fechaDevolucion));
+                if (p != null)
+                {
+                    pvm = new PrestamoViewModel(p.PrestamoId, p.devuelto, p.fechaPrestamo, p.fechaDevolucionTope, p.fechaDevolucionReal, p.usuario_UsuarioId, p.libro_LibroID);
+                    pvm.fechaPrestamoString = p.fechaPrestamo.ToString("dd/MM/yyyy");
+                    pvm.fechaDevolucionTopeString = p.fechaDevolucionTope.ToString("dd/MM/yyyy");
+                    pvm.fechaDevolucionRealString = p.fechaDevolucionReal.ToString("dd/MM/yyyy");
+                    pvms.Add(pvm);
+                }
             }
             return pvms;
         }
 
         public static PrestamoViewModel mapper(Prestamo p)
         {
-            return new PrestamoViewModel(p.PrestamoId, p.devuelto, p.fechaPrestamo, p.fechaDevolucion);
+            PrestamoViewModel pvm = null;
+            if (p != null)
+            {
+                pvm = new PrestamoViewModel(p.PrestamoId, p.devuelto, p.fechaPrestamo, p.fechaDevolucionTope, p.fechaDevolucionReal, p.usuario_UsuarioId, p.libro_LibroID);
+                pvm.fechaPrestamoString = p.fechaPrestamo.ToString("dd/MM/yyyy");
+                pvm.fechaDevolucionTopeString = p.fechaDevolucionTope.ToString("dd/MM/yyyy");
+                pvm.fechaDevolucionRealString = p.fechaDevolucionReal.ToString("dd/MM/yyyy");
+            }
+            return pvm;
         }
 
         public static Prestamo mapper(PrestamoViewModel pvm)
         {
-            return new Prestamo(pvm.PrestamoId, pvm.devuelto, pvm.fechaPrestamo, pvm.fechaDevolucion, pvm.UsuarioId, pvm.LibroId);
+            Prestamo p = null;
+            if (pvm != null)
+            {
+                p = new Prestamo(pvm.PrestamoId, pvm.devuelto, pvm.fechaPrestamo, pvm.fechaDevolucionTope, pvm.fechaDevolucionReal, pvm.UsuarioId, pvm.LibroId);
+            }
+            return p;
         }
 
         public static void add(PrestamoViewModel pvm)
@@ -35,7 +52,8 @@ namespace ejemplo.Services
             using (var ctx = new BibliotecaContext())
             {
                 Prestamo p = mapper(pvm);
-                p.fechaDevolucion = DateTime.MaxValue;
+                p.fechaDevolucionTope = p.fechaPrestamo.AddDays(Prestamo.DIAS_PRESTAMO);
+                p.fechaDevolucionReal = DateTime.MaxValue;
                 ctx.Entry(p).State = EntityState.Added;
                 //ctx.Prestamos.Add(p);
                 ctx.SaveChanges();
@@ -50,7 +68,7 @@ namespace ejemplo.Services
                 if (p != null)
                 {
                     p.devuelto = pvm.devuelto;
-                    p.fechaDevolucion = pvm.fechaDevolucion;
+                    p.fechaDevolucionTope = pvm.fechaDevolucionTope;
                     p.fechaPrestamo = pvm.fechaPrestamo;
                     p.usuario_UsuarioId = pvm.UsuarioId;
                     p.libro_LibroID = pvm.LibroId;

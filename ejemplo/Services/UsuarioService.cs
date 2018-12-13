@@ -13,7 +13,7 @@ namespace ejemplo.Services {
             {
                 if(u != null)
                 {
-                    uvms.Add(new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono));
+                    uvms.Add(new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email));
                 }
             }
             return uvms;
@@ -24,7 +24,7 @@ namespace ejemplo.Services {
             UsuarioViewModel uvm = null;
             if( u != null)
             {
-                uvm = new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email, u.password, u.localidad, u.calle, u.numero, u.telefono);
+                uvm = new UsuarioViewModel(u.UsuarioId, u.tipoDocumento, u.numeroDocumento, u.nombre, u.apellido, u.email);
             }
             return uvm;
         }
@@ -34,7 +34,7 @@ namespace ejemplo.Services {
             Usuario u = null;
             if(uvm != null)
             {
-                u = new Usuario(uvm.UsuarioId, uvm.tipoDocumento, uvm.numeroDocumento, uvm.nombre, uvm.apellido, uvm.email, uvm.password, uvm.localidad, uvm.calle, uvm.numero, uvm.telefono);
+                u = new Usuario(uvm.UsuarioId, uvm.tipoDocumento, uvm.numeroDocumento, uvm.nombre, uvm.apellido, uvm.email);
             }
             return u;
         }
@@ -70,9 +70,6 @@ namespace ejemplo.Services {
                     u.tipoDocumento = uvm.tipoDocumento;
                     u.numeroDocumento = uvm.numeroDocumento;
                     u.email = uvm.email;
-                    u.calle = uvm.calle;
-                    u.numero = uvm.numero;
-                    u.localidad = uvm.localidad;
                     ctx.SaveChanges();
                 }
             }

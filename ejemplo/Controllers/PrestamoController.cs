@@ -24,7 +24,8 @@ namespace ejemplo.Controllers
         }
         public ActionResult NuevoPrestamo()
         {
-            return View(PrestamoService.getFormData());
+            PrestamoViewModel pvm = PrestamoService.getFormData();
+            return View(pvm);
         }
 
         [HttpPost,
@@ -39,6 +40,24 @@ namespace ejemplo.Controllers
             return View(PrestamoService.getFormData());
         }
 
+        public ActionResult Modificar(int prestamoId)
+        {
+            PrestamoViewModel pvm = PrestamoService.getFormData();
+            PrestamoViewModel pvmMod = PrestamoService.findById(prestamoId);
+            pvm.LibroId = pvmMod.LibroId;
+            pvm.UsuarioId = pvmMod.UsuarioId;
+            pvm.fechaPrestamoString = pvmMod.fechaPrestamoString;
+            // pasar las fechas para q capture el action
+            return View(pvm);
+        }
+
+        [HttpPost, ValidateAntiForgeryToken]
+        public ActionResult Modificar(PrestamoViewModel pvm)
+        {
+            PrestamoService.update(pvm);
+            return volverAlListado();
+        }
+
         public ActionResult PrestamoPorDNI()
         {
             return View();
@@ -48,6 +67,9 @@ namespace ejemplo.Controllers
             return View();
         }
 
-
+        private ActionResult volverAlListado()
+        {
+            return RedirectToAction("Listar", "Prestamo");
+        }
     }
 }

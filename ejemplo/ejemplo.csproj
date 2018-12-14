@@ -228,6 +228,7 @@
     <Content Include="Views\Libro\Modificar.cshtml" />
     <Content Include="Views\Usuario\Modificar.cshtml" />
     <Content Include="Views\Usuario\Eliminar.cshtml" />
+    <Content Include="Views\Prestamo\Modificar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

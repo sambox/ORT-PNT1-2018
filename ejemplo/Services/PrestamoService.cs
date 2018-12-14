@@ -37,6 +37,7 @@ namespace ejemplo.Services {
             return pvm;
         }
 
+
         public static Prestamo mapper(PrestamoViewModel pvm)
         {
             Prestamo p = null;
@@ -67,7 +68,6 @@ namespace ejemplo.Services {
                 Prestamo p = ctx.Prestamos.SingleOrDefault(b => b.PrestamoId == pvm.PrestamoId);
                 if (p != null)
                 {
-                    p.devuelto = pvm.devuelto;
                     p.fechaDevolucionTope = pvm.fechaDevolucionTope;
                     p.fechaPrestamo = pvm.fechaPrestamo;
                     p.usuario_UsuarioId = pvm.UsuarioId;
@@ -110,6 +110,15 @@ namespace ejemplo.Services {
                 p.libro = LibroService.findById(p.LibroId);
             }
             return pvms;
+        }
+        public static PrestamoViewModel findById(int prestamoId)
+        {
+            Prestamo p;
+            using (var ctx = new BibliotecaContext())
+            {
+                p = ctx.Prestamos.SingleOrDefault(b => b.PrestamoId == prestamoId);
+            }
+            return mapper(p);
         }
     }
 }

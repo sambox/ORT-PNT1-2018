@@ -1,0 +1,30 @@
+﻿@model ejemplo.Models.PrestamoViewModel
+<br />
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Modificar
+        </div>
+        <div class="panel-body">
+            <form id="formNuevoPrestamo" method="post" action="">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(x => x.UsuarioId)
+                    @Html.DropDownListFor(x => x.UsuarioId, new SelectList(Model.usuarios, "UsuarioId", "nombreApellido"), "Seleccionar", new { @class = "form-control validacion-combo" })
+                    @Html.ValidationMessageFor(x => x.UsuarioId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.LibroId)
+                    @Html.DropDownListFor(x => x.LibroId, new SelectList(Model.libros, "LibroId", "tituloAutor"), "Seleccionar", new { @class = "form-control validacion-combo" })
+                    @Html.ValidationMessageFor(x => x.LibroId)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.fechaPrestamo)
+                    @Html.TextBoxFor(x => x.fechaPrestamo, "{0:dd/MM/yyyy}", new { @placeholder = "dd/mm/yyyy", @class = "form-control validacion-fecha" })
+                    @Html.ValidationMessageFor(x => x.fechaPrestamo)
+                </div>
+                <div class="form-group"><button type="submit" class="btn btn-primary" id="">Guardar</button></div>
+            </form>
+        </div>
+    </div>
+</div>

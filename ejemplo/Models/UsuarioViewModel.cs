@@ -16,6 +16,7 @@ namespace ejemplo.Models
         public List<UsuarioViewModel> lista { get; set; }
         public string nombreApellido { get; set; }
         public string tipoNumeroDocumento { get; set; }
+        public bool tienePrestamos { get; set; }
 
 
         public UsuarioViewModel(int usuarioId, string tipoDocumento, int numeroDocumento, string nombre,

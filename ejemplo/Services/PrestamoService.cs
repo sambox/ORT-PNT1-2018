@@ -86,12 +86,46 @@ namespace ejemplo.Services {
             }
         }
 
+        private static bool validarEjemplaresDisponibles(LibroViewModel lvm)
+        {
+            List<Prestamo> ps = findByLibroId(lvm.LibroId);
+            return ps.Count() < lvm.cantEjemplares;
+        }
+
+        public static List<Prestamo> findByLibroId(int LibroId)
+        {
+            List<Prestamo> ps;
+            using (var ctx = new BibliotecaContext())
+            {
+                ps = ctx.Prestamos.Where(p => p.libro_LibroID == LibroId).ToList();
+            }
+            return ps;
+        }
+
+        public static List<Prestamo> findByUsuarioId(int UsuarioId)
+        {
+            List<Prestamo> ps;
+            using (var ctx = new BibliotecaContext())
+            {
+                ps = ctx.Prestamos.Where(p => p.usuario_UsuarioId == UsuarioId).ToList();
+            }
+            return ps;
+        }
+
         public static PrestamoViewModel getFormData()
         {
+            List<LibroViewModel> lvms = new List<LibroViewModel>();
             PrestamoViewModel pvm = new PrestamoViewModel();
             pvm.fechaPrestamo = DateTime.Now;
             pvm.usuarios = UsuarioService.findAll();
-            pvm.libros = LibroService.findAll();
+            foreach (var lvm in LibroService.findAll())
+            {
+                if (validarEjemplaresDisponibles(lvm))
+                {
+                    lvms.Add(lvm);
+                }
+            }
+            pvm.libros = lvms;
             return pvm;
         }
 
@@ -150,6 +184,44 @@ namespace ejemplo.Services {
                     ctx.SaveChanges();
                 }
             }
+        }
+
+        public static List<PrestamoViewModel> findByNumeroDocumento(int numeroDocumento)
+        {
+            List<PrestamoViewModel> pvms;
+            List<UsuarioViewModel> uvms = UsuarioService.findByNumeroDocumento(numeroDocumento);
+            List<int> uIds = new List<int>();
+            foreach (var u in uvms)
+            {
+                uIds.Add(u.UsuarioId);
+            }
+            List<Prestamo> ps;
+            using (var ctx = new BibliotecaContext())
+            {
+                ps = ctx.Prestamos.Where(p => uIds.Contains(p.usuario_UsuarioId)).ToList();
+            }
+            pvms = mapper(ps);
+            cargarDatos(pvms);
+            return pvms;
+        }
+
+        public static List<PrestamoViewModel> findByTitulo(String titulo)
+        {
+            List<PrestamoViewModel> pvms;
+            List<LibroViewModel> lvms = LibroService.findLibroByTitulo(titulo);
+            List<int> lIds = new List<int>();
+            foreach (var l in lvms)
+            {
+                lIds.Add(l.LibroId);
+            }
+            List<Prestamo> ps;
+            using (var ctx = new BibliotecaContext())
+            {
+                ps = ctx.Prestamos.Where(p => lIds.Contains(p.libro_LibroID)).ToList();
+            }
+            pvms = mapper(ps);
+            cargarDatos(pvms);
+            return pvms;
         }
     }
 }

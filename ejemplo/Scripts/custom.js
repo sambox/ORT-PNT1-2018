@@ -143,7 +143,7 @@ $(document).ready(function () {
         let form = $(".formBuscadorPorDoc");
         let nroDoc = $(".formBuscadorPorDoc #nroDoc");
 
-        if (validacionNumerica(nroDoc) || nroDoc.val().length < 8) {
+        if (validacionNumerica(nroDoc)) {
             mostrarError(nroDoc, true);
             error = true;
         } else {

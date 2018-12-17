@@ -15,6 +15,7 @@ namespace ejemplo.Models
         public int cantEjemplares { get; set; }
         public List<LibroViewModel> lista { get; set; }
         public string tituloAutor { get; set; }
+        public bool tienePrestamos { get; set; }
 
         public LibroViewModel(int libroId, string titulo, string autor, string isbn, string genero, int cantEjemplares)
         {

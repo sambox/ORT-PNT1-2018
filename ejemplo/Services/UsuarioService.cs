@@ -87,12 +87,26 @@ namespace ejemplo.Services {
 
         public static List<UsuarioViewModel> findAll()
         {
+            List<UsuarioViewModel> uvms;
             List<Usuario> ul;
             using (var ctx = new BibliotecaContext())
             {
                 ul = ctx.Usuarios.ToList();
             }
-            return mapper(ul);
+            uvms = mapper(ul);
+            verificarSiTienenPrestamos(uvms);
+            return uvms;
+        }
+
+        private static void verificarSiTienenPrestamos(List<UsuarioViewModel> uvms)
+        {
+            foreach (var uvm in uvms)
+            {
+                if (PrestamoService.findByUsuarioId(uvm.UsuarioId).Count() > 0)
+                {
+                    uvm.tienePrestamos = true;
+                }
+            }
         }
 
         public static List<UsuarioViewModel> findByNumeroDocumento(int numeroDocumento)
@@ -100,7 +114,6 @@ namespace ejemplo.Services {
             List<Usuario> ul;
             using (var ctx = new BibliotecaContext())
             {
-                //ul = ctx.Usuarios.SingleOrDefault(b => b.numeroDocumento == numeroDocumento);
                 ul = ctx.Usuarios.Where(x => x.numeroDocumento.ToString().Contains(numeroDocumento.ToString())).ToList();
             }
             return mapper(ul);

@@ -43,7 +43,10 @@
                                     <td>@Html.DisplayFor(modelItem => usuario.numeroDocumento)</td>
                                     <td>
                                         @Html.ActionLink("Modificar", "Modificar", "Usuario", new { UsuarioId = usuario.UsuarioId }, null)
-                                        @Html.ActionLink("Eliminar", "Eliminar", "Usuario", new { UsuarioId = usuario.UsuarioId }, null)
+                                        @if (!usuario.tienePrestamos)
+                                        {
+                                            @Html.ActionLink("Eliminar", "Eliminar", "Usuario", new { UsuarioId = usuario.UsuarioId }, null)
+                                        }
                                     </td>
                                 </tr>
                             }

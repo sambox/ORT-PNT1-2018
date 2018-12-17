@@ -67,9 +67,25 @@ namespace ejemplo.Controllers {
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult PrestamoPorDNI(int numeroDocumento)
+        {
+            PrestamoViewModel pvm = new PrestamoViewModel();
+            pvm.lista = PrestamoService.findByNumeroDocumento(numeroDocumento);
+            return View(pvm);
+        }
+
         public ActionResult PrestamoPorLibro()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult PrestamoPorLibro(String titulo)
+        {
+            PrestamoViewModel pvm = new PrestamoViewModel();
+            pvm.lista = PrestamoService.findByTitulo(titulo);
+            return View(pvm);
         }
 
         private ActionResult volverAlListado()

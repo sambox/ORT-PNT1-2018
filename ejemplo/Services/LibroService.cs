@@ -76,12 +76,26 @@ namespace ejemplo.Services {
 
         public static List<LibroViewModel> findAll()
         {
+            List<LibroViewModel> lvms;
             List<Libro> l;
             using (var ctx = new BibliotecaContext())
             {
                 l = ctx.Libros.ToList();
             }
-            return mapper(l);
+            lvms = mapper(l);
+            verificarSiTienenPrestamos(lvms);
+            return lvms;
+        }
+
+        private static void verificarSiTienenPrestamos(List<LibroViewModel> lvms)
+        {
+            foreach (var lvm in lvms)
+            {
+                if (PrestamoService.findByLibroId(lvm.LibroId).Count() > 0)
+                {
+                    lvm.tienePrestamos = true;
+                }
+            }
         }
 
         public static LibroViewModel findById(int LibroId)

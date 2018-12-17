@@ -1,13 +1,10 @@
 ﻿@model ejemplo.Models.LibroViewModel
-@{
-    ViewBag.Title = "Buscar Titulo";
-}
 
 <br />
 <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            @ViewBag.Title
+            Buscar Titulo
         </div>
         <div class="panel-body">
             <form class="formBuscadorPorTitulo" method="post" action="">
@@ -43,7 +40,10 @@
                                     <td>@Html.DisplayFor(modelItem => libro.cantEjemplares)</td>
                                     <td>
                                         @Html.ActionLink("Modificar", "Modificar", "Libro", new { LibroId = libro.LibroId }, null)
-                                        @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { LibroId = libro.LibroId }, null)
+                                        @if (!libro.tienePrestamos)
+                                        {
+                                            @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { LibroId = libro.LibroId }, null)
+                                        }
                                     </td>
                                 </tr>
                             }

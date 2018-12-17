@@ -39,7 +39,10 @@
                                     <td>@Html.DisplayFor(modelItem => libro.cantEjemplares)</td>
                                     <td>
                                         @Html.ActionLink("Modificar", "Modificar", "Libro", new { LibroId = libro.LibroId }, null)
-                                        @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { LibroId = libro.LibroId }, null)
+                                        @if (!libro.tienePrestamos)
+                                        {
+                                            @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { LibroId = libro.LibroId }, null)
+                                        }
                                     </td>
                                 </tr>
                             }

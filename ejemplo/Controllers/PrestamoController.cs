@@ -1,14 +1,9 @@
 ﻿using ejemplo.Models;
 using ejemplo.Services;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace ejemplo.Controllers
-{
+namespace ejemplo.Controllers {
     public class PrestamoController : Controller
     {
         // GET: Prestamo
@@ -20,7 +15,9 @@ namespace ejemplo.Controllers
         }
         public ActionResult ListarNoDevueltos()
         {
-            return View();
+            PrestamoViewModel pvm = new PrestamoViewModel();
+            pvm.lista = PrestamoService.findNoDevueltos();
+            return View(pvm);
         }
         public ActionResult NuevoPrestamo()
         {
@@ -47,15 +44,23 @@ namespace ejemplo.Controllers
             pvm.LibroId = pvmMod.LibroId;
             pvm.UsuarioId = pvmMod.UsuarioId;
             pvm.fechaPrestamoString = pvmMod.fechaPrestamoString;
-            // pasar las fechas para q capture el action
+            pvm.fechaDevolucionReal = pvmMod.fechaDevolucionReal;
+            pvm.fechaDevolucionTope = pvmMod.fechaDevolucionTope;
             return View(pvm);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Modificar(PrestamoViewModel pvm)
         {
+            pvm.fechaDevolucionTope = pvm.fechaPrestamo.AddDays(Prestamo.DIAS_PRESTAMO);
             PrestamoService.update(pvm);
             return volverAlListado();
+        }
+
+        public ActionResult Devolver(int prestamoId)
+        {
+            PrestamoService.devolver(prestamoId);
+            return volverAlListadoNoDevueltos();
         }
 
         public ActionResult PrestamoPorDNI()
@@ -70,6 +75,11 @@ namespace ejemplo.Controllers
         private ActionResult volverAlListado()
         {
             return RedirectToAction("Listar", "Prestamo");
+        }
+
+        private ActionResult volverAlListadoNoDevueltos()
+        {
+            return RedirectToAction("ListarNoDevueltos", "Prestamo");
         }
     }
 }

@@ -43,7 +43,10 @@
                         }
                     </td>
                     <td>
-                        @Html.ActionLink("Devolver", "Devolver", "Prestamo", new { PrestamoId = p.PrestamoId }, null)
+                        @if (!p.devuelto)
+                        {
+                            @Html.ActionLink("Devolver", "Devolver", "Prestamo", new { PrestamoId = p.PrestamoId }, null)
+                        }
                         @Html.ActionLink("Modificar", "Modificar", "Prestamo", new { PrestamoId = p.PrestamoId }, null)
                     </td>
                 </tr>

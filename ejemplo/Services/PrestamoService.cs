@@ -56,7 +56,6 @@ namespace ejemplo.Services {
                 p.fechaDevolucionTope = p.fechaPrestamo.AddDays(Prestamo.DIAS_PRESTAMO);
                 p.fechaDevolucionReal = DateTime.MaxValue;
                 ctx.Entry(p).State = EntityState.Added;
-                //ctx.Prestamos.Add(p);
                 ctx.SaveChanges();
             }
         }
@@ -104,13 +103,19 @@ namespace ejemplo.Services {
                 ps = ctx.Prestamos.ToList();
             }
             List<PrestamoViewModel> pvms = mapper(ps);
+            cargarDatos(pvms);
+            return pvms;
+        }
+
+        private static void cargarDatos(List<PrestamoViewModel> pvms)
+        {
             foreach (var p in pvms)
             {
                 p.usuario = UsuarioService.findById(p.UsuarioId);
                 p.libro = LibroService.findById(p.LibroId);
             }
-            return pvms;
         }
+
         public static PrestamoViewModel findById(int prestamoId)
         {
             Prestamo p;
@@ -119,6 +124,32 @@ namespace ejemplo.Services {
                 p = ctx.Prestamos.SingleOrDefault(b => b.PrestamoId == prestamoId);
             }
             return mapper(p);
+        }
+
+        public static List<PrestamoViewModel> findNoDevueltos()
+        {
+            List<Prestamo> ps;
+            using (var ctx = new BibliotecaContext())
+            {
+                ps = ctx.Prestamos.Where(b => b.devuelto == false).ToList();
+            }
+            List<PrestamoViewModel> pvms = mapper(ps);
+            cargarDatos(pvms);
+            return pvms;
+        }
+
+        public static void devolver(int prestamoId)
+        {
+            using (var ctx = new BibliotecaContext())
+            {
+                Prestamo p = ctx.Prestamos.SingleOrDefault(b => b.PrestamoId == prestamoId);
+                if (p != null)
+                {
+                    p.devuelto = true;
+                    p.fechaDevolucionReal = DateTime.Now;
+                    ctx.SaveChanges();
+                }
+            }
         }
     }
 }

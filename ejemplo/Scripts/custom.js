@@ -57,21 +57,22 @@ function validacionFecha(e) {
 $(document).ready(function () {
 
     // validaciones
+  
     $(".validacion-texto").on("blur keyup", function (event) {
         event.preventDefault();
         mostrarError($(this), validacionTexto($(this)));
     });
-
+  
     $(".validacion-email").on("blur keyup", function (event) {
         event.preventDefault();
         mostrarError($(this), validacionEmail($(this)));
     });
-
+ 
     $(".validacion-numerica").on("blur keyup", function (event) {
         event.preventDefault();
         mostrarError($(this), validacionNumerica($(this)));
     });
-
+    
     $(".validacion-combo").on("blur keyup", function (event) {
         event.preventDefault();
         mostrarError($(this), validacionCombo($(this)));
